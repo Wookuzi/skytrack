@@ -1,47 +1,61 @@
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
+// ---------------------------------------------------------------------------
+// SkyTrack: tema in skupni slogi
+//
+// Vse barve so določene samo tukaj. Komponente uporabljajo Material
+// sistemske spremenljivke (--mat-sys-*), zato nimajo lastnih barvnih vrednosti.
+// ---------------------------------------------------------------------------
 @use '@angular/material' as mat;
 
 html {
   height: 100%;
+  color-scheme: dark;
+
+  // Material 3: jantarni poudarek (primary) za dejanja in izbrano stanje,
+  // cian (tertiary) za radarske kroge in druge oznake.
   @include mat.theme(
     (
       color: (
-        primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
+        theme-type: dark,
+        primary: mat.$orange-palette,
+        tertiary: mat.$cyan-palette,
       ),
       typography: Roboto,
       density: 0,
     )
   );
+
+  // Temno modre "radarske" površine namesto privzetih sivih.
+  @include mat.theme-overrides(
+    (
+      surface: #0a1324,
+      surface-dim: #0a1324,
+      surface-bright: #24365a,
+      surface-container-lowest: #060d1a,
+      surface-container-low: #0e1a2f,
+      surface-container: #122038,
+      surface-container-high: #172742,
+      surface-container-highest: #1d2f4d,
+      on-surface: #e3e9f5,
+      on-surface-variant: #a9b6cc,
+      outline: #6b7c98,
+      outline-variant: #2a3a55,
+    )
+  );
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
-
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
+  margin: 0;
+  min-height: 100%;
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
-  margin: 0;
-  height: 100%;
 }
-/* You can add global styles to this file, and also import other style files */
 
-// ---------------------------------------------------------------------------
-// SkyTrack: razmiki in skupni postavitveni razredi
-// Barve prihajajo iz Material sistemskih spremenljivk (--mat-sys-*).
-// ---------------------------------------------------------------------------
+a {
+  color: var(--mat-sys-primary);
+}
+
+// Razmiki: enotna lestvica 4 / 8 / 16 / 24 / 32 px.
 :root {
   --space-1: 4px;
   --space-2: 8px;
@@ -60,11 +74,23 @@ body {
   padding: var(--space-6) var(--space-4) var(--space-8);
 }
 
-// Mreža kartic, ki se sama prilagodi širini.
+// Mreža kartic: en stolpec na telefonu, dva na tablici, 3–4 na računalniku.
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
+}
+
+@media (min-width: 600px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
 }
 
 .section-title {
@@ -97,4 +123,64 @@ body {
   place-items: center;
   background: var(--mat-sys-primary-container);
   color: var(--mat-sys-on-primary-container);
+}
+
+// Ikona pred besedilom v gumbu ali elementu menija.
+.button-icon {
+  margin-right: var(--space-2);
+}
+
+// Obrazec v kartici (prijava, registracija, kontakt).
+.form-card {
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+}
+
+.form-hint {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-small);
+  text-align: center;
+}
+
+// Navadna tabela (admin, zgodovina leta). mat-table ni uporabljen, ker zahteva *matRowDef.
+.table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+
+  caption {
+    padding-bottom: var(--space-2);
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-label-medium);
+    text-align: left;
+  }
+
+  th,
+  td {
+    padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  th {
+    font: var(--mat-sys-label-large);
+  }
 }
