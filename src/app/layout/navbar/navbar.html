@@ -1,55 +1,56 @@
-<!-- Širok zaslon -->
-<nav class="links wide" aria-label="Glavna navigacija">
-  <a mat-button routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">
-    <fa-icon class="button-icon" [icon]="faMapLocationDot" />Radar
-  </a>
-  <a mat-button routerLink="/sledena" routerLinkActive="active" ariaCurrentWhenActive="page">
-    <fa-icon class="button-icon" [icon]="faStar" />Sledena
-  </a>
-  <a mat-button routerLink="/letalisca" routerLinkActive="active" ariaCurrentWhenActive="page">
-    <fa-icon class="button-icon" [icon]="faPlaneDeparture" />Letališča
-  </a>
-  <a mat-button routerLink="/admin" routerLinkActive="active" ariaCurrentWhenActive="page">
-    <fa-icon class="button-icon" [icon]="faUserShield" />Admin
-  </a>
-  <a mat-button routerLink="/o-aplikaciji" routerLinkActive="active" ariaCurrentWhenActive="page">
-    <fa-icon class="button-icon" [icon]="faCircleInfo" />O aplikaciji
-  </a>
-</nav>
-<a mat-flat-button class="wide" routerLink="/prijava">
-  <fa-icon class="button-icon" [icon]="faRightToBracket" />Prijava
-</a>
+<!-- Širok zaslon: levi pas -->
+<nav class="rail" aria-label="Glavna navigacija">
+  <a class="rail-logo" routerLink="/" aria-label="SkyTrack, domov"><fa-icon [icon]="faPlane" /></a>
 
-<!-- Ozek zaslon -->
-<button
-  mat-icon-button
-  class="narrow"
-  type="button"
-  aria-label="Odpri meni"
-  [matMenuTriggerFor]="menu"
->
+  <div class="rail-group">
+    <a mat-icon-button class="rail-link" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }" aria-label="Radar" matTooltip="Radar" matTooltipPosition="right">
+      <fa-icon [icon]="faMapLocationDot" />
+    </a>
+    <a mat-icon-button class="rail-link" routerLink="/sledena" routerLinkActive="active" ariaCurrentWhenActive="page" aria-label="Sledena letala" matTooltip="Sledena letala" matTooltipPosition="right">
+      <fa-icon [icon]="faStar" />
+    </a>
+    <a mat-icon-button class="rail-link" routerLink="/letalisca" routerLinkActive="active" ariaCurrentWhenActive="page" aria-label="Letališča" matTooltip="Letališča" matTooltipPosition="right">
+      <fa-icon [icon]="faPlaneDeparture" />
+    </a>
+    <a mat-icon-button class="rail-link" routerLink="/admin" routerLinkActive="active" ariaCurrentWhenActive="page" aria-label="Administracija" matTooltip="Administracija" matTooltipPosition="right">
+      <fa-icon [icon]="faUserShield" />
+    </a>
+  </div>
+
+  <div class="rail-group rail-bottom">
+    <a mat-icon-button class="rail-link" routerLink="/o-aplikaciji" routerLinkActive="active" ariaCurrentWhenActive="page" aria-label="O aplikaciji" matTooltip="O aplikaciji" matTooltipPosition="right">
+      <fa-icon [icon]="faCircleInfo" />
+    </a>
+    <a mat-icon-button class="rail-link" routerLink="/kontakt" routerLinkActive="active" ariaCurrentWhenActive="page" aria-label="Kontakt" matTooltip="Kontakt" matTooltipPosition="right">
+      <fa-icon [icon]="faEnvelope" />
+    </a>
+  </div>
+</nav>
+
+<!-- Ozek zaslon: meni -->
+<button mat-icon-button class="menu-button" type="button" aria-label="Odpri meni" [matMenuTriggerFor]="menu">
   <fa-icon [icon]="faBars" />
 </button>
 <mat-menu #menu="matMenu" xPosition="before">
-  <a mat-menu-item routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">
+  <a mat-menu-item routerLink="/" routerLinkActive="active-item" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">
     <fa-icon class="button-icon" [icon]="faMapLocationDot" />Radar
   </a>
-  <a mat-menu-item routerLink="/sledena" routerLinkActive="active" ariaCurrentWhenActive="page">
+  <a mat-menu-item routerLink="/sledena" routerLinkActive="active-item" ariaCurrentWhenActive="page">
     <fa-icon class="button-icon" [icon]="faStar" />Sledena
   </a>
-  <a mat-menu-item routerLink="/letalisca" routerLinkActive="active" ariaCurrentWhenActive="page">
+  <a mat-menu-item routerLink="/letalisca" routerLinkActive="active-item" ariaCurrentWhenActive="page">
     <fa-icon class="button-icon" [icon]="faPlaneDeparture" />Letališča
   </a>
-  <a mat-menu-item routerLink="/admin" routerLinkActive="active" ariaCurrentWhenActive="page">
+  <a mat-menu-item routerLink="/admin" routerLinkActive="active-item" ariaCurrentWhenActive="page">
     <fa-icon class="button-icon" [icon]="faUserShield" />Admin
   </a>
-  <a mat-menu-item routerLink="/o-aplikaciji" routerLinkActive="active" ariaCurrentWhenActive="page">
+  <a mat-menu-item routerLink="/o-aplikaciji" routerLinkActive="active-item" ariaCurrentWhenActive="page">
     <fa-icon class="button-icon" [icon]="faCircleInfo" />O aplikaciji
   </a>
-  <a mat-menu-item routerLink="/kontakt" routerLinkActive="active" ariaCurrentWhenActive="page">
+  <a mat-menu-item routerLink="/kontakt" routerLinkActive="active-item" ariaCurrentWhenActive="page">
     <fa-icon class="button-icon" [icon]="faEnvelope" />Kontakt
   </a>
-  <a mat-menu-item routerLink="/prijava" routerLinkActive="active" ariaCurrentWhenActive="page">
+  <a mat-menu-item routerLink="/prijava" routerLinkActive="active-item" ariaCurrentWhenActive="page">
     <fa-icon class="button-icon" [icon]="faRightToBracket" />Prijava
   </a>
 </mat-menu>

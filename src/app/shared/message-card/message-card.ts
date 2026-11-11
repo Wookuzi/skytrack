@@ -23,4 +23,6 @@ export class MessageCard {
   readonly icon = input.required<IconDefinition>();
   readonly status = input('');
   readonly unread = input(false);
+  /** Barva oznake stanja. */
+  readonly tone = input<'ok' | 'warn' | 'alert' | 'active'>('active');
 }

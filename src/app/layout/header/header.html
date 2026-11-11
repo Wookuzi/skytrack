@@ -1,7 +1,27 @@
-<mat-toolbar class="toolbar">
+<mat-toolbar class="topbar">
   <a class="logo" routerLink="/" aria-label="SkyTrack, domov">
-    <fa-icon class="logo-icon" [icon]="faPlane" />
+    <span class="logo-mark" aria-hidden="true"><fa-icon [icon]="faPlane" /></span>
     <span>SkyTrack</span>
   </a>
-  <app-navbar class="navbar" />
+
+  <ul class="status" aria-label="Stanje zračnega prostora">
+    <li><span class="dot dot-ok" aria-hidden="true"></span>V zraku <strong>22/24</strong></li>
+    <li><span class="dot dot-warn" aria-hidden="true"></span>Na tleh <strong>2</strong></li>
+    <li>Sledena <strong>3</strong></li>
+    <li>Povp. višina <strong>9.450 m</strong></li>
+  </ul>
+
+  <span class="spacer"></span>
+
+  <label class="search">
+    <fa-icon class="search-icon" [icon]="faMagnifyingGlass" />
+    <input type="search" placeholder="Išči let, letališče …" aria-label="Iskanje po aplikaciji" />
+    <kbd aria-hidden="true">⌘K</kbd>
+  </label>
+
+  <a mat-flat-button class="login" routerLink="/prijava">
+    <fa-icon class="button-icon" [icon]="faRightToBracket" />Prijava
+  </a>
+
+  <app-navbar />
 </mat-toolbar>

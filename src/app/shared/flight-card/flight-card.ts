@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faPlane } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faPlane } from '@fortawesome/free-solid-svg-icons';
 
 /** Kartica enega leta. Hitrost je v km/h, višina v metrih, smer v stopinjah. */
 @Component({
@@ -22,7 +22,10 @@ export class FlightCard {
   readonly speed = input.required<number>();
   readonly heading = input.required<number>();
   readonly status = input('V zraku');
+  /** Barva oznake stanja: ok (zeleno), warn (oranžno), alert (rdeče). */
+  readonly tone = input<'ok' | 'warn' | 'alert'>('ok');
   readonly note = input('');
 
   protected readonly faPlane = faPlane;
+  protected readonly faArrowRight = faArrowRight;
 }

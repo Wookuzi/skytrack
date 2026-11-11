@@ -4,12 +4,22 @@
   top: 0;
   z-index: 10;
   border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+  // Zameglitev je na ločenem sloju: backdrop-filter na samem elementu bi
+  // fiksiranemu levemu pasu (Navbar) spremenil izhodišče postavitve.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgb(11 11 13 / 80%);
+    backdrop-filter: blur(12px);
+  }
 }
 
-.toolbar {
-  gap: var(--space-6);
+.topbar {
+  gap: var(--space-4);
   padding-inline: var(--space-4);
-  background: var(--mat-sys-surface-container);
 }
 
 .logo {
@@ -18,13 +28,126 @@
   gap: var(--space-2);
   color: inherit;
   text-decoration: none;
-  font: var(--mat-sys-title-large);
+  font: var(--mat-sys-title-medium);
+  font-weight: 700;
 }
 
-.logo-icon {
-  color: var(--mat-sys-primary);
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  font-size: 14px;
 }
 
-.navbar {
+// Tabletke s stanjem zračnega prostora.
+.status {
+  display: none;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 6px 12px;
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: 999px;
+    background: var(--mat-sys-surface-container-low);
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-label-medium);
+  }
+
+  strong {
+    color: var(--mat-sys-on-surface);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.dot-ok {
+  background: var(--sky-ok);
+}
+
+.dot-warn {
+  background: var(--sky-warn);
+}
+
+.spacer {
   flex: 1;
+}
+
+// Iskalno polje v obliki tabletke.
+.search {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  width: 280px;
+  height: 40px;
+  padding: 0 var(--space-2) 0 var(--space-4);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 999px;
+  background: var(--mat-sys-surface-container-low);
+  color: var(--mat-sys-on-surface-variant);
+
+  &:focus-within {
+    border-color: var(--mat-sys-outline);
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--mat-sys-on-surface);
+    font: var(--mat-sys-body-medium);
+
+    &::placeholder {
+      color: var(--mat-sys-on-surface-variant);
+    }
+  }
+
+  kbd {
+    padding: 2px 6px;
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: 6px;
+    font: var(--mat-sys-label-small);
+  }
+}
+
+.login {
+  display: none;
+}
+
+// Širok zaslon: logotip je v levem pasu, v vrstici so stanje, iskanje in prijava.
+@media (min-width: 960px) {
+  .topbar {
+    padding-inline: var(--space-8);
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .search,
+  .login {
+    display: flex;
+  }
+}
+
+@media (min-width: 1200px) {
+  .status {
+    display: flex;
+  }
 }

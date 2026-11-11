@@ -5,14 +5,15 @@
 .map {
   position: relative;
   overflow: hidden;
-  height: 520px;
+  height: 560px;
   border: 1px solid var(--mat-sys-outline-variant);
-  border-radius: var(--mat-sys-corner-large);
-  background: var(--mat-sys-surface-container-lowest);
+  border-radius: 20px;
+  background: radial-gradient(circle at 60% 35%, var(--mat-sys-surface-container) 0%, var(--mat-sys-surface-container-lowest) 75%);
 }
 
 :host(.small) .map {
-  height: 260px;
+  height: 100%;
+  min-height: 280px;
 }
 
 .background {
@@ -22,44 +23,52 @@
   height: 100%;
 }
 
-.land {
-  fill: var(--mat-sys-surface-container-high);
+.street {
+  fill: none;
+  stroke: var(--mat-sys-surface-container-highest);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
 }
 
-.border {
+.road {
   fill: none;
   stroke: var(--mat-sys-outline);
-  stroke-dasharray: 6 6;
-  stroke-width: 1.5;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.55;
 }
 
-.grid {
+.river {
   fill: none;
-  stroke: var(--mat-sys-outline-variant);
-  stroke-width: 1;
+  stroke: var(--mat-sys-surface-container-high);
+  stroke-width: 14;
+  vector-effect: non-scaling-stroke;
+}
+
+.ring {
+  fill: none;
+  stroke: var(--mat-sys-outline);
+  stroke-dasharray: 2 6;
+  vector-effect: non-scaling-stroke;
   opacity: 0.6;
 }
 
-.ring,
-.axis {
+.trail {
   fill: none;
-  stroke: var(--mat-sys-tertiary);
-  stroke-width: 1;
-  opacity: 0.35;
-}
-
-.center {
-  fill: var(--mat-sys-tertiary);
+  stroke: var(--mat-sys-primary);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+  vector-effect: non-scaling-stroke;
 }
 
 .plane {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: 6px;
   transform: translate(-50%, -50%);
   color: var(--mat-sys-on-surface);
-  font-size: 18px;
+  font-size: 16px;
 
   fa-icon {
     // Ikona faPlane kaže proti vzhodu (90°).
@@ -68,34 +77,169 @@
 }
 
 .label {
-  padding: 0 var(--space-1);
-  border-radius: var(--mat-sys-corner-extra-small);
-  background: var(--mat-sys-surface-container-highest);
-  color: var(--mat-sys-on-surface);
+  padding: 2px 6px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 6px;
+  background: rgb(11 11 13 / 85%);
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-small);
+  font-weight: 600;
+}
+
+// Izbrano letalo: limetina barva in utripajoč krog.
+.focus {
+  color: var(--mat-sys-primary);
+  font-size: 22px;
+
+  .label {
+    border-color: var(--mat-sys-primary);
+    color: var(--mat-sys-primary);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--sky-glow) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    animation: pulse 2.4s ease-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    scale: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+    scale: 1.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus::before {
+    animation: none;
+  }
+}
+
+.compass {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(var(--mat-sys-outline-variant) 0deg 1deg, transparent 1deg 15deg),
+    var(--mat-sys-surface-container-low);
+}
+
+.compass-n {
+  position: absolute;
+  top: 6px;
+  color: var(--mat-sys-on-surface-variant);
   font: var(--mat-sys-label-small);
 }
 
-.focus {
-  color: var(--mat-sys-primary);
-  font-size: 24px;
+.needle {
+  position: absolute;
+  width: 4px;
+  height: 30px;
+  border-radius: 2px;
+  background: linear-gradient(var(--mat-sys-primary) 50%, var(--mat-sys-outline) 50%);
+  rotate: var(--heading);
 }
 
-// Na malem zemljevidu poudarimo samo izbrano letalo.
-:host(.small) .plane:not(.focus) {
-  opacity: 0.35;
+.compass-value {
+  position: relative;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--mat-sys-surface-container-lowest);
+  font: var(--mat-sys-label-medium);
+  font-weight: 700;
+}
 
-  .label {
+.controls {
+  position: absolute;
+  right: var(--space-4);
+  bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 999px;
+  background: var(--mat-sys-surface-container-low);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.overlay {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  width: min(340px, calc(100% - 32px));
+
+  &:empty {
     display: none;
   }
 }
 
-// Telefon: nižji zemljevid, da je seznam letov hitro dosegljiv.
-@media (max-width: 599px) {
-  .map {
-    height: 340px;
+.legend {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-2);
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-small);
+}
+
+// Mali zemljevid: brez upravljanja, poudarjeno samo izbrano letalo.
+:host(.small) {
+  .controls,
+  .legend {
+    display: none;
   }
 
-  :host(.small) .map {
-    height: 220px;
+  .compass {
+    width: 64px;
+    height: 64px;
+  }
+
+  .plane:not(.focus) {
+    opacity: 0.35;
+
+    .label {
+      display: none;
+    }
+  }
+}
+
+// Telefon: nižji zemljevid, kompas manjši, lebdeča kartica pod zemljevidom.
+@media (max-width: 599px) {
+  .map {
+    height: 380px;
+  }
+
+  .compass {
+    width: 60px;
+    height: 60px;
+  }
+
+  .needle {
+    height: 22px;
+  }
+
+  .overlay {
+    display: none;
   }
 }

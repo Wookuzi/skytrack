@@ -4,6 +4,13 @@
   min-height: 100vh;
 }
 
+// Na širokem zaslonu je na levi ozek navigacijski pas (Navbar).
+@media (min-width: 960px) {
+  :host {
+    padding-left: var(--sky-rail-width);
+  }
+}
+
 .main {
   flex: 1;
   outline: none;

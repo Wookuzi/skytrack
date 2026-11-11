@@ -1,35 +1,61 @@
-:host {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-}
-
-.links {
-  display: flex;
-  gap: var(--space-1);
-}
-
-.active {
-  background: var(--mat-sys-secondary-container);
-  color: var(--mat-sys-on-secondary-container);
-}
-
-.narrow {
+.rail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
   display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  width: var(--sky-rail-width);
+  padding: var(--space-4) 0;
+  border-right: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface-container-lowest);
 }
 
-// Pod 960 px povezave ne gredo več v eno vrstico: prikaži meni.
-@media (max-width: 959px) {
-  :host {
-    justify-content: flex-end;
+.rail-logo {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+}
+
+.rail-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 999px;
+  background: var(--mat-sys-surface-container-low);
+}
+
+.rail-bottom {
+  margin-top: auto;
+}
+
+.rail-link {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+// Izbrana stran: svetel krog s temno ikono.
+.rail-link.active {
+  background: var(--mat-sys-on-surface);
+  color: var(--mat-sys-surface);
+}
+
+.active-item {
+  background: var(--mat-sys-surface-container-highest);
+}
+
+@media (min-width: 960px) {
+  .rail {
+    display: flex;
   }
 
-  .wide {
+  .menu-button {
     display: none;
-  }
-
-  .narrow {
-    display: inline-flex;
   }
 }

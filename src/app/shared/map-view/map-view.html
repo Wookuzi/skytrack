@@ -1,24 +1,41 @@
-<div class="map" role="img" aria-label="Stiliziran zemljevid z letali nad Slovenijo in okolico">
-  <svg class="background" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <pattern id="map-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path class="grid" d="M 40 0 L 0 0 0 40" />
-      </pattern>
-    </defs>
-    <path
-      class="land"
-      d="M0 0 H800 V330 C740 300 700 350 640 340 S560 300 520 330 S430 400 380 370
-         S300 330 250 360 S150 420 90 390 S30 350 0 370 Z"
-    />
-    <path class="border" d="M150 0 C170 90 120 160 210 230 S330 250 360 330" />
-    <path class="border" d="M520 0 C500 80 560 150 540 230 S600 300 640 340" />
-    <rect width="800" height="500" fill="url(#map-grid)" />
-    <circle class="ring" cx="400" cy="250" r="90" />
-    <circle class="ring" cx="400" cy="250" r="180" />
-    <circle class="ring" cx="400" cy="250" r="270" />
-    <line class="axis" x1="400" y1="0" x2="400" y2="500" />
-    <line class="axis" x1="0" y1="250" x2="800" y2="250" />
-    <circle class="center" cx="400" cy="250" r="4" />
+<div class="map">
+  <svg class="background" viewBox="0 0 800 500" preserveAspectRatio="none" role="img" aria-label="Stiliziran zemljevid z letali nad Slovenijo in okolico">
+    <!-- Ulice -->
+    <g>
+      <path class="street" d="M20 -10 L37 60 L28 130 L17 200 L26 270 L27 340 L20 410 L31 480" />
+      <path class="street" d="M93 -10 L95 60 L102 130 L108 200 L120 270 L110 340 L105 410 L113 480" />
+      <path class="street" d="M150 -10 L132 60 L139 130 L138 200 L155 270 L167 340 L152 410 L153 480" />
+      <path class="street" d="M212 -10 L220 60 L226 130 L229 200 L245 270 L262 340 L257 410 L250 480" />
+      <path class="street" d="M269 -10 L262 60 L248 130 L240 200 L237 270 L229 340 L246 410 L249 480" />
+      <path class="street" d="M325 -10 L340 60 L322 130 L313 200 L315 270 L316 340 L313 410 L300 480" />
+      <path class="street" d="M386 -10 L368 60 L363 130 L357 200 L363 270 L380 340 L381 410 L368 480" />
+      <path class="street" d="M434 -10 L425 60 L420 130 L417 200 L410 270 L412 340 L416 410 L405 480" />
+      <path class="street" d="M502 -10 L500 60 L515 130 L520 200 L526 270 L526 340 L527 410 L534 480" />
+      <path class="street" d="M561 -10 L557 60 L565 130 L555 200 L559 270 L553 340 L546 410 L541 480" />
+      <path class="street" d="M616 -10 L631 60 L615 130 L628 200 L611 270 L608 340 L594 410 L577 480" />
+      <path class="street" d="M678 -10 L667 60 L672 130 L658 200 L656 270 L660 340 L645 410 L662 480" />
+      <path class="street" d="M734 -10 L749 60 L765 130 L781 200 L791 270 L782 340 L763 410 L753 480" />
+      <path class="street" d="M776 -10 L756 60 L760 130 L750 200 L759 270 L759 340 L766 410 L756 480" />
+      <path class="street" d="M-10 33 L90 23 L190 19 L290 33 L390 19 L490 19 L590 1 L690 16 L790 21" />
+      <path class="street" d="M-10 93 L90 76 L190 91 L290 79 L390 96 L490 99 L590 105 L690 97 L790 87" />
+      <path class="street" d="M-10 139 L90 141 L190 125 L290 135 L390 142 L490 150 L590 150 L690 133 L790 119" />
+      <path class="street" d="M-10 213 L90 200 L190 207 L290 221 L390 204 L490 218 L590 231 L690 249 L790 265" />
+      <path class="street" d="M-10 270 L90 267 L190 258 L290 267 L390 280 L490 277 L590 267 L690 264 L790 278" />
+      <path class="street" d="M-10 326 L90 321 L190 325 L290 334 L390 328 L490 336 L590 333 L690 322 L790 315" />
+      <path class="street" d="M-10 395 L90 412 L190 417 L290 431 L390 446 L490 435 L590 440 L690 427 L790 427" />
+      <path class="street" d="M-10 446 L90 456 L190 472 L290 471 L390 460 L490 458 L590 446 L690 452 L790 453" />
+      <path class="street" d="M-10 506 L90 506 L190 516 L290 511 L390 520 L490 503 L590 496 L690 497 L790 486" />
+    </g>
+    <!-- Glavne ceste in reka -->
+    <path class="river" d="M-10 380 C120 340 210 420 330 390 S520 300 610 340 S760 420 820 380" />
+    <path class="road" d="M-10 120 C160 150 300 90 420 140 S640 230 820 180" />
+    <path class="road" d="M260 -10 C280 120 230 260 300 360 S340 470 330 520" />
+    <path class="road" d="M640 -10 C600 110 660 220 620 320 S560 460 590 520" />
+    <!-- Doseg radarja -->
+    <circle class="ring" cx="400" cy="250" r="120" />
+    <circle class="ring" cx="400" cy="250" r="240" />
+    <!-- Pot izbranega leta -->
+    <polyline class="trail" points="600,-20 566,40 530,100 496,150" />
   </svg>
 
   <!-- Položaji in smeri vzorčnih letov; --heading je smer v stopinjah. -->
@@ -40,4 +57,22 @@
   <span class="plane" style="left: 54%; top: 76%; --heading: 76deg">
     <fa-icon [icon]="faPlane" /><span class="label">WMT4WE</span>
   </span>
+
+  <!-- Kompas: smer izbranega leta -->
+  <div class="compass" aria-hidden="true">
+    <span class="compass-n">S</span>
+    <span class="needle" style="--heading: 208deg"></span>
+    <span class="compass-value">JJZ</span>
+  </div>
+
+  <!-- Upravljanje zemljevida (v tej vaji brez delovanja) -->
+  <div class="controls">
+    <button mat-icon-button type="button" aria-label="Povečaj"><fa-icon [icon]="faPlus" /></button>
+    <button mat-icon-button type="button" aria-label="Pomanjšaj"><fa-icon [icon]="faMinus" /></button>
+    <button mat-icon-button type="button" aria-label="Moja lokacija"><fa-icon [icon]="faLocationCrosshairs" /></button>
+  </div>
+
+  <div class="overlay"><ng-content select="[mapOverlay]" /></div>
+
+  <p class="legend">Podatki: OpenSky Network · osveženo pred 10 s</p>
 </div>

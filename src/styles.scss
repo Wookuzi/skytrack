@@ -1,8 +1,9 @@
 // ---------------------------------------------------------------------------
 // SkyTrack: tema in skupni slogi
 //
-// Vse barve so določene samo tukaj. Komponente uporabljajo Material
-// sistemske spremenljivke (--mat-sys-*), zato nimajo lastnih barvnih vrednosti.
+// Slog: temna, nevtralna nadzorna plošča. Skoraj črno ozadje, oglje-sive
+// kartice s tankimi obrobami, limetin poudarek za dejanja in izbrano stanje.
+// Vse barve so določene samo tukaj; komponente uporabljajo --mat-sys-* in --sky-*.
 // ---------------------------------------------------------------------------
 @use '@angular/material' as mat;
 
@@ -10,37 +11,120 @@ html {
   height: 100%;
   color-scheme: dark;
 
-  // Material 3: jantarni poudarek (primary) za dejanja in izbrano stanje,
-  // cian (tertiary) za radarske kroge in druge oznake.
   @include mat.theme(
     (
       color: (
         theme-type: dark,
-        primary: mat.$orange-palette,
+        primary: mat.$chartreuse-palette,
         tertiary: mat.$cyan-palette,
       ),
-      typography: Roboto,
+      typography: (
+        plain-family: 'Inter, Roboto, sans-serif',
+        brand-family: 'Inter, Roboto, sans-serif',
+      ),
       density: 0,
     )
   );
 
-  // Temno modre "radarske" površine namesto privzetih sivih.
+  // Nevtralne temne površine in limetin poudarek.
   @include mat.theme-overrides(
     (
-      surface: #0a1324,
-      surface-dim: #0a1324,
-      surface-bright: #24365a,
-      surface-container-lowest: #060d1a,
-      surface-container-low: #0e1a2f,
-      surface-container: #122038,
-      surface-container-high: #172742,
-      surface-container-highest: #1d2f4d,
-      on-surface: #e3e9f5,
-      on-surface-variant: #a9b6cc,
-      outline: #6b7c98,
-      outline-variant: #2a3a55,
+      primary: #d4f36a,
+      on-primary: #162000,
+      primary-container: #2b3412,
+      on-primary-container: #e4f8a0,
+      secondary-container: #f1f1f3,
+      on-secondary-container: #111113,
+      surface: #0b0b0d,
+      surface-dim: #0b0b0d,
+      surface-bright: #2a2a30,
+      surface-container-lowest: #070708,
+      surface-container-low: #111113,
+      surface-container: #151518,
+      surface-container-high: #1c1c20,
+      surface-container-highest: #25252b,
+      on-surface: #f3f3f5,
+      on-surface-variant: #9b9ba6,
+      outline: #45454e,
+      outline-variant: #26262c,
+      corner-medium: 14px,
+      corner-large: 20px,
     )
   );
+
+  // Kartice: oglje-sive, velik polmer, tanka obroba.
+  @include mat.card-overrides(
+    (
+      outlined-container-color: var(--mat-sys-surface-container-low),
+      outlined-outline-color: var(--mat-sys-outline-variant),
+      outlined-container-shape: 20px,
+      title-text-weight: 600,
+    )
+  );
+
+  // Gumbi v obliki tabletke.
+  @include mat.button-overrides(
+    (
+      filled-container-shape: 999px,
+      outlined-container-shape: 999px,
+      text-container-shape: 999px,
+      filled-label-text-weight: 600,
+    )
+  );
+
+  // Čipi kot tabletke; izbran čip je svetel s temnim besedilom.
+  @include mat.chips-overrides(
+    (
+      container-shape-radius: 999px,
+      outline-color: var(--mat-sys-outline-variant),
+      label-text-color: var(--mat-sys-on-surface-variant),
+      elevated-selected-container-color: var(--mat-sys-on-surface),
+      selected-label-text-color: var(--mat-sys-surface),
+      with-icon-selected-icon-color: var(--mat-sys-surface),
+    )
+  );
+
+  @include mat.form-field-overrides(
+    (
+      outlined-container-shape: 14px,
+      outlined-outline-color: var(--mat-sys-outline-variant),
+      outlined-hover-outline-color: var(--mat-sys-outline),
+    )
+  );
+
+  @include mat.tabs-overrides(
+    (
+      divider-color: var(--mat-sys-outline-variant),
+      active-indicator-height: 2px,
+    )
+  );
+
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: transparent,
+      standard-height: 72px,
+      mobile-height: 64px,
+    )
+  );
+
+  @include mat.tooltip-overrides(
+    (
+      container-color: var(--mat-sys-surface-container-highest),
+      supporting-text-color: var(--mat-sys-on-surface),
+    )
+  );
+}
+
+// Barve stanj (oznake na karticah, sporočilih, tabelah).
+:root {
+  --sky-ok: #8ee07c;
+  --sky-ok-bg: rgb(142 224 124 / 12%);
+  --sky-warn: #f5a742;
+  --sky-warn-bg: rgb(245 167 66 / 12%);
+  --sky-alert: #ff6464;
+  --sky-alert-bg: rgb(255 100 100 / 12%);
+  --sky-glow: rgb(212 243 106 / 35%);
+  --sky-rail-width: 76px;
 }
 
 body {
@@ -49,6 +133,7 @@ body {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -69,9 +154,13 @@ a {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: var(--space-6) var(--space-4) var(--space-8);
+
+  @media (min-width: 960px) {
+    padding: var(--space-8);
+  }
 }
 
 // Mreža kartic: en stolpec na telefonu, dva na tablici, 3–4 na računalniku.
@@ -239,4 +328,29 @@ a {
 :focus-visible {
   outline: 2px solid var(--mat-sys-primary);
   outline-offset: 2px;
+}
+
+// Oznaka stanja (mat-chip v mat-chip-set): ok / warn / alert.
+.status-ok {
+  @include mat.chips-overrides((outline-color: transparent, elevated-container-color: var(--sky-ok-bg), label-text-color: var(--sky-ok)));
+}
+
+.status-warn {
+  @include mat.chips-overrides((outline-color: transparent, elevated-container-color: var(--sky-warn-bg), label-text-color: var(--sky-warn)));
+}
+
+.status-alert {
+  @include mat.chips-overrides((outline-color: transparent, elevated-container-color: var(--sky-alert-bg), label-text-color: var(--sky-alert)));
+}
+
+.status-active {
+  @include mat.chips-overrides((outline-color: transparent, elevated-container-color: var(--mat-sys-primary-container), label-text-color: var(--mat-sys-primary)));
+}
+
+// Majhne oznake stanja so nižje od običajnih čipov.
+.status-ok,
+.status-warn,
+.status-alert,
+.status-active {
+  @include mat.chips-overrides((container-height: 24px, label-text-size: 12px, label-text-weight: 600));
 }

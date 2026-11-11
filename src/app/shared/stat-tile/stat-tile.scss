@@ -4,20 +4,24 @@
 
 .tile {
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: var(--space-4);
   height: 100%;
-  padding: var(--space-4);
+  padding: var(--space-4) var(--space-4) var(--space-4) 20px;
 }
 
-.icon {
-  color: var(--mat-sys-primary);
-  font-size: 20px;
+.label {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-medium);
 }
 
 .value {
+  margin-top: var(--space-2);
   font: var(--mat-sys-headline-small);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
   white-space: nowrap;
 }
 
@@ -26,7 +30,14 @@
   font: var(--mat-sys-body-medium);
 }
 
-.label {
-  color: var(--mat-sys-on-surface-variant);
-  font: var(--mat-sys-label-medium);
+.icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--mat-sys-surface-container-high);
+  color: var(--mat-sys-primary);
+  font-size: 14px;
 }

@@ -6,7 +6,7 @@
       <span class="details">{{ meta() }}</span>
     </div>
     <mat-chip-set class="status" aria-label="Stanje">
-      <mat-chip [highlighted]="unread()">{{ status() }}</mat-chip>
+      <mat-chip [class]="'status-' + tone()">{{ status() }}</mat-chip>
     </mat-chip-set>
   </header>
   <p class="body"><ng-content /></p>

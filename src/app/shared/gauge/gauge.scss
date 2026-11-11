@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.gauge {
+  display: grid;
+  justify-items: center;
+  padding: var(--space-2);
+  border-radius: 16px;
+  background: var(--mat-sys-surface-container);
+}
+
+.arc {
+  grid-area: 1 / 1;
+  width: 100%;
+  max-width: 160px;
+}
+
+.track,
+.fill {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 7;
+}
+
+.track {
+  stroke: var(--mat-sys-surface-container-highest);
+}
+
+.fill {
+  stroke: var(--mat-sys-primary);
+  filter: drop-shadow(0 0 4px var(--sky-glow));
+}
+
+.readout {
+  display: flex;
+  grid-area: 1 / 1;
+  flex-direction: column;
+  align-items: center;
+  align-self: end;
+}
+
+.value {
+  font: var(--mat-sys-title-large);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.unit,
+.label {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-small);
+}
+
+.label {
+  margin-top: var(--space-1);
+}

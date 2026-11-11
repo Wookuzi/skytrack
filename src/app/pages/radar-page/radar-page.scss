@@ -12,15 +12,66 @@
   gap: var(--space-4);
 }
 
+// Lebdeča kartica na zemljevidu (steklen videz).
+.selected {
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: rgb(17 17 19 / 88%);
+  backdrop-filter: blur(10px);
+}
+
+.selected-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.selected-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-primary);
+}
+
+.selected-name {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  strong {
+    font: var(--mat-sys-title-medium);
+    font-weight: 700;
+  }
+
+  span {
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-small);
+  }
+}
+
+.gauges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.arrow {
+  margin-left: var(--space-2);
+  font-size: 12px;
+}
+
 // Tablica: zemljevid nad seznamom, kartice v dveh stolpcih.
-@media (min-width: 600px) and (max-width: 959px) {
+@media (min-width: 600px) and (max-width: 1199px) {
   .flights {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-// Širok zaslon: zemljevid in seznam drug ob drugem, seznam se drsi posebej.
-@media (min-width: 960px) {
+// Širok zaslon: zemljevid in seznam drug ob drugem.
+@media (min-width: 1200px) {
   .radar {
     grid-template-columns: minmax(0, 1fr) 380px;
     align-items: start;
@@ -28,7 +79,7 @@
 
   .map {
     position: sticky;
-    top: 88px;
+    top: 96px;
   }
 
   .stats {

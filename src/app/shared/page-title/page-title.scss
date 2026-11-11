@@ -1,7 +1,7 @@
 .page-title {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
   gap: var(--space-4);
 }
 
@@ -9,12 +9,13 @@
   display: grid;
   place-items: center;
   flex: none;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--mat-sys-corner-medium);
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-  font-size: 22px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 14px;
+  background: var(--mat-sys-surface-container-low);
+  color: var(--mat-sys-primary);
+  font-size: 18px;
 }
 
 .text {
@@ -24,7 +25,9 @@
 
 .heading {
   margin: 0;
-  font: var(--mat-sys-headline-small);
+  font: var(--mat-sys-headline-medium);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
@@ -37,6 +40,12 @@
   }
 }
 
-.actions:empty {
-  display: none;
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+
+  &:empty {
+    display: none;
+  }
 }
