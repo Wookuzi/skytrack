@@ -10,11 +10,26 @@
   gap: var(--space-1);
 }
 
-.link-icon {
-  margin-right: var(--space-2);
-}
-
 .active {
   background: var(--mat-sys-secondary-container);
   color: var(--mat-sys-on-secondary-container);
+}
+
+.narrow {
+  display: none;
+}
+
+// Pod 960 px povezave ne gredo več v eno vrstico: prikaži meni.
+@media (max-width: 959px) {
+  :host {
+    justify-content: flex-end;
+  }
+
+  .wide {
+    display: none;
+  }
+
+  .narrow {
+    display: inline-flex;
+  }
 }

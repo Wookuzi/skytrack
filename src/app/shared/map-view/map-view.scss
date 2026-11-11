@@ -88,3 +88,14 @@
     display: none;
   }
 }
+
+// Telefon: nižji zemljevid, da je seznam letov hitro dosegljiv.
+@media (max-width: 599px) {
+  .map {
+    height: 340px;
+  }
+
+  :host(.small) .map {
+    height: 220px;
+  }
+}

@@ -15,6 +15,13 @@
   gap: var(--space-4);
 }
 
+// Tablica: zemljevid nad seznamom, kartice v dveh stolpcih.
+@media (min-width: 600px) and (max-width: 959px) {
+  .flights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 // Širok zaslon: zemljevid in seznam drug ob drugem, seznam se drsi posebej.
 @media (min-width: 960px) {
   .radar {
