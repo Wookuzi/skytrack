@@ -42,3 +42,6 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Osebni delovni načrt (ni del oddaje)
+NACRT.md
