@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.subtitle {
+  margin: 0;
+
+  &:empty {
+    display: none;
+  }
+}

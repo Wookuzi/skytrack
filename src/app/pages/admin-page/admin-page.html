@@ -5,7 +5,7 @@
     [icon]="faUserShield"
   />
 
-  <div class="stats">
+  <div class="stat-grid">
     <app-stat-tile label="Uporabnikov" value="128" [icon]="faUsers" />
     <app-stat-tile label="Sledenih letal" value="342" [icon]="faStar" />
     <app-stat-tile label="Novih sporočil" value="2" [icon]="faEnvelope" />
@@ -131,39 +131,15 @@
       <!-- Sporočila -->
       <mat-tab label="Sporočila (2)">
         <div class="tab-body messages">
-          <article class="message new">
-            <header class="message-head">
-              <fa-icon class="message-icon" [icon]="faEnvelope" />
-              <div class="message-meta">
-                <strong>Napačna višina pri letu CTN436R</strong>
-                <span>Marko Kranjc · 10. 11. 2026</span>
-              </div>
-              <mat-chip-set aria-label="Stanje"><mat-chip highlighted>Novo</mat-chip></mat-chip-set>
-            </header>
-            <p>Višina se je za nekaj sekund prikazala kot 0 m, čeprav je letalo letelo.</p>
-          </article>
-          <article class="message new">
-            <header class="message-head">
-              <fa-icon class="message-icon" [icon]="faEnvelope" />
-              <div class="message-meta">
-                <strong>Predlog: filter po letalski družbi</strong>
-                <span>Gost · 9. 11. 2026</span>
-              </div>
-              <mat-chip-set aria-label="Stanje"><mat-chip highlighted>Novo</mat-chip></mat-chip-set>
-            </header>
-            <p>Bilo bi super, če bi lahko prikazal samo lete izbrane družbe.</p>
-          </article>
-          <article class="message">
-            <header class="message-head">
-              <fa-icon class="message-icon" [icon]="faEnvelopeOpen" />
-              <div class="message-meta">
-                <strong>Hvala za aplikacijo</strong>
-                <span>Nina Zupan · 4. 11. 2026</span>
-              </div>
-              <mat-chip-set aria-label="Stanje"><mat-chip>Prebrano</mat-chip></mat-chip-set>
-            </header>
-            <p>Uporabljam jo za spotting na Brniku. Odlično!</p>
-          </article>
+          <app-message-card heading="Napačna višina pri letu CTN436R" meta="Marko Kranjc · 10. 11. 2026" status="Novo" [unread]="true" [icon]="faEnvelope">
+            Višina se je za nekaj sekund prikazala kot 0 m, čeprav je letalo letelo.
+          </app-message-card>
+          <app-message-card heading="Predlog: filter po letalski družbi" meta="Gost · 9. 11. 2026" status="Novo" [unread]="true" [icon]="faEnvelope">
+            Bilo bi super, če bi lahko prikazal samo lete izbrane družbe.
+          </app-message-card>
+          <app-message-card heading="Hvala za aplikacijo" meta="Nina Zupan · 4. 11. 2026" status="Prebrano" [icon]="faEnvelopeOpen">
+            Uporabljam jo za spotting na Brniku. Odlično!
+          </app-message-card>
         </div>
       </mat-tab>
     </mat-tab-group>

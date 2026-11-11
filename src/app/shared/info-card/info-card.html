@@ -1,0 +1,10 @@
+<mat-card appearance="outlined" class="full-height">
+  <mat-card-header>
+    <span mat-card-avatar class="card-avatar" aria-hidden="true"><fa-icon [icon]="icon()" /></span>
+    <h2 mat-card-title>{{ heading() }}</h2>
+    <p mat-card-subtitle class="subtitle">{{ subtitle() }}</p>
+  </mat-card-header>
+  <mat-card-content class="card-body">
+    <ng-content />
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,13 @@
+<article class="message">
+  <header class="head">
+    <fa-icon class="icon" [icon]="icon()" />
+    <div class="meta">
+      <h2 class="heading">{{ heading() }}</h2>
+      <span class="details">{{ meta() }}</span>
+    </div>
+    <mat-chip-set class="status" aria-label="Stanje">
+      <mat-chip [highlighted]="unread()">{{ status() }}</mat-chip>
+    </mat-chip-set>
+  </header>
+  <p class="body"><ng-content /></p>
+</article>

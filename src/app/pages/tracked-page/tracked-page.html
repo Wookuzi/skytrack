@@ -13,23 +13,24 @@
         <app-flight-card icao24="39de4c" callsign="TVF44AG" country="Francija" [altitude]="11270" [speed]="921" [heading]="128" note="Vsak dan ob tej uri nad Ljubljano." />
       </div>
     </mat-tab>
-    <mat-tab label="Zapiski">
+    <mat-tab label="Zapiski (2)">
       <div class="notes tab-body">
-        <mat-card appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>QTR34E</mat-card-title>
-            <mat-card-subtitle>Dodano 9. 11. 2026</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content class="note-text">A350, lep!</mat-card-content>
-        </mat-card>
-        <mat-card appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>TVF44AG</mat-card-title>
-            <mat-card-subtitle>Dodano 10. 11. 2026</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content class="note-text">Vsak dan ob tej uri nad Ljubljano.</mat-card-content>
-        </mat-card>
+        <app-message-card heading="QTR34E · Katar" meta="Dodano 9. 11. 2026" [icon]="faNoteSticky">
+          A350, lep!
+        </app-message-card>
+        <app-message-card heading="TVF44AG · Francija" meta="Dodano 10. 11. 2026" [icon]="faNoteSticky">
+          Vsak dan ob tej uri nad Ljubljano.
+        </app-message-card>
       </div>
+    </mat-tab>
+    <mat-tab label="Opozorila (0)">
+      <app-empty-state
+        heading="Ni vklopljenih opozoril"
+        text="Ko pri sledenem letalu vklopiš opozorilo, boš tukaj videl, kdaj je vzletelo ali pristalo."
+        [icon]="faBell"
+      >
+        <a mat-button routerLink="/">Na radar</a>
+      </app-empty-state>
     </mat-tab>
   </mat-tab-group>
 </div>

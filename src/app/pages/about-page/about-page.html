@@ -1,66 +1,42 @@
 <div class="page">
   <app-page-title heading="O aplikaciji" subtitle="Kaj je SkyTrack in od kod so podatki" [icon]="faCircleInfo" />
 
-  <div class="stats">
+  <div class="stat-grid">
     <app-stat-tile label="Osveževanje podatkov" value="10" unit="s" [icon]="faClock" />
     <app-stat-tile label="Dnevna kvota OpenSky" value="400" unit="kreditov" [icon]="faGaugeHigh" />
     <app-stat-tile label="Letal nad Slovenijo (vzorec)" value="24" [icon]="faPlane" />
   </div>
 
   <div class="card-grid">
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <span mat-card-avatar class="card-avatar" aria-hidden="true"><fa-icon [icon]="faPlane" /></span>
-        <mat-card-title>Kaj je SkyTrack</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="text">
-        <p>
-          SkyTrack je brezplačen spletni sledilnik letal. Na zemljevidu pokaže letala nad
-          Slovenijo in okolico, za vsak let prikaže višino, hitrost in smer, prijavljeni
-          uporabniki pa si lahko shranijo letala, ki jih zanimajo, in jim dodajo zapiske.
-        </p>
-      </mat-card-content>
-    </mat-card>
+    <app-info-card heading="Kaj je SkyTrack" [icon]="faPlane">
+      <p class="prose">
+        SkyTrack je brezplačen spletni sledilnik letal. Na zemljevidu pokaže letala nad
+        Slovenijo in okolico, za vsak let prikaže višino, hitrost in smer, prijavljeni
+        uporabniki pa si lahko shranijo letala, ki jih zanimajo, in jim dodajo zapiske.
+      </p>
+    </app-info-card>
 
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <span mat-card-avatar class="card-avatar" aria-hidden="true"><fa-icon [icon]="faUsers" /></span>
-        <mat-card-title>Za koga</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="text">
-        <p>
-          Za letalske navdušence in spotterje, za vse, ki jih zanima, kaj leti nad njimi, ter
-          za dijake in študente, ki spoznavajo letalstvo.
-        </p>
-      </mat-card-content>
-    </mat-card>
+    <app-info-card heading="Za koga" [icon]="faUsers">
+      <p class="prose">
+        Za letalske navdušence in spotterje, za vse, ki jih zanima, kaj leti nad njimi, ter za
+        dijake in študente, ki spoznavajo letalstvo.
+      </p>
+    </app-info-card>
 
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <span mat-card-avatar class="card-avatar" aria-hidden="true"><fa-icon [icon]="faDatabase" /></span>
-        <mat-card-title>Vir podatkov</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="text">
-        <p>
-          Podatki o letih prihajajo iz
-          <a href="https://opensky-network.org" target="_blank" rel="noopener">OpenSky Network</a>,
-          odprte mreže sprejemnikov ADS-B. Na voljo je trenutno stanje letal; voznih redov in
-          zamud OpenSky ne ponuja.
-        </p>
-      </mat-card-content>
-    </mat-card>
+    <app-info-card heading="Vir podatkov" [icon]="faDatabase">
+      <p class="prose">
+        Podatki o letih prihajajo iz
+        <a href="https://opensky-network.org" target="_blank" rel="noopener">OpenSky Network</a>,
+        odprte mreže sprejemnikov ADS-B. Na voljo je trenutno stanje letal; voznih redov in
+        zamud OpenSky ne ponuja.
+      </p>
+    </app-info-card>
 
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <span mat-card-avatar class="card-avatar" aria-hidden="true"><fa-icon [icon]="faCode" /></span>
-        <mat-card-title>Tehnologije</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="text">
-        <p>
-          Čelni del je izdelan v Angularju 22 z Angular Material in Font Awesome. V tej
-          različici je vsebina statična; zaledni del v Node.js in podatkovna baza sta načrtovana.
-        </p>
-      </mat-card-content>
-    </mat-card>
+    <app-info-card heading="Tehnologije" [icon]="faCode">
+      <p class="prose">
+        Čelni del je izdelan v Angularju 22 z Angular Material in Font Awesome. V tej različici
+        je vsebina statična; zaledni del v Node.js in podatkovna baza sta načrtovana.
+      </p>
+    </app-info-card>
   </div>
 </div>

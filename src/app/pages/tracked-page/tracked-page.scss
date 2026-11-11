@@ -1,13 +1,10 @@
+// Zavihki niso v kartici, zato vsebina nima stranskega odmika.
 .tab-body {
-  padding-top: var(--space-6);
+  padding-inline: 0;
 }
 
 .notes {
   display: grid;
   gap: var(--space-4);
   max-width: 640px;
-}
-
-.note-text {
-  padding-top: var(--space-2);
 }

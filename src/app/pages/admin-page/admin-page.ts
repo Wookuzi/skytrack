@@ -15,6 +15,7 @@ import {
   faUserShield,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { MessageCard } from '../../shared/message-card/message-card';
 import { PageTitle } from '../../shared/page-title/page-title';
 import { StatTile } from '../../shared/stat-tile/stat-tile';
 
@@ -23,7 +24,7 @@ import { StatTile } from '../../shared/stat-tile/stat-tile';
  * potrebuje strukturne direktive (*matRowDef), ki jih ta vaja ne uporablja.
  */
 @Component({
-  imports: [MatTabsModule, MatCardModule, MatButtonModule, MatChipsModule, FaIconComponent, PageTitle, StatTile],
+  imports: [MatTabsModule, MatCardModule, MatButtonModule, MatChipsModule, FaIconComponent, PageTitle, StatTile, MessageCard],
   selector: 'app-admin-page',
   styleUrl: './admin-page.scss',
   templateUrl: './admin-page.html',

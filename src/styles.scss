@@ -205,3 +205,32 @@ a {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+// Mreža ploščic StatTile.
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
+}
+
+// Vsebina zavihka v mat-tab-group.
+.tab-body {
+  margin: 0;
+  padding: var(--space-6);
+}
+
+// Kartica, ki zapolni višino celice v mreži.
+.full-height {
+  height: 100%;
+}
+
+// Vsebina kartice pod glavo.
+.card-body {
+  padding-top: var(--space-4);
+}
+
+// Daljše besedilo.
+.prose {
+  margin: 0;
+  line-height: 1.6;
+}

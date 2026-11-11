@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import {
   faCircleInfo,
   faClock,
@@ -10,11 +8,12 @@ import {
   faPlane,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import { InfoCard } from '../../shared/info-card/info-card';
 import { PageTitle } from '../../shared/page-title/page-title';
 import { StatTile } from '../../shared/stat-tile/stat-tile';
 
 @Component({
-  imports: [MatCardModule, FaIconComponent, PageTitle, StatTile],
+  imports: [PageTitle, StatTile, InfoCard],
   selector: 'app-about-page',
   styleUrl: './about-page.scss',
   templateUrl: './about-page.html',

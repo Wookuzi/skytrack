@@ -11,7 +11,7 @@
 
   <div class="overview">
     <app-map-view size="small" />
-    <div class="stats">
+    <div class="stat-grid stats">
       <app-stat-tile label="Višina" value="11.582" unit="m" [icon]="faMountain" />
       <app-stat-tile label="Hitrost" value="805" unit="km/h" [icon]="faGaugeHigh" />
       <app-stat-tile label="Smer" value="208" unit="°" [icon]="faCompass" />
@@ -50,11 +50,11 @@
         </dl>
       </mat-tab>
       <mat-tab label="Pot">
-        <p class="tab-body">
-          Izris poti bo na voljo, ko bo aplikacija povezana z zalednim delom. OpenSky za
-          anonimne uporabnike vrača samo trenutno stanje, zato bo pot sestavljena iz zaporednih
-          položajev.
-        </p>
+        <app-empty-state
+          heading="Pot še ni na voljo"
+          text="Izris poti bo na voljo, ko bo aplikacija povezana z zalednim delom. OpenSky za anonimne uporabnike vrača samo trenutno stanje, zato bo pot sestavljena iz zaporednih položajev."
+          [icon]="faRoute"
+        />
       </mat-tab>
       <mat-tab label="Zgodovina">
         <div class="tab-body table-wrap">
