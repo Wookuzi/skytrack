@@ -186,7 +186,7 @@ Za oddajo je treba te osnutke pretvoriti v slike ali PDF (glej razdelek 11).
 
 ## 6. Angular komponente
 
-Skupaj **18 lastnih komponent** (zahtevanih 8), od tega **6 uporabljenih na več mestih** (zahtevani 2).
+Skupaj **21 lastnih komponent** (zahtevanih 8), od tega **9 uporabljenih na več mestih** (zahtevani 2). Komponente InfoCard, MessageCard in EmptyState so nastale v 4. fazi pri pregledu podvajanja.
 
 ### Hierarhija
 
@@ -196,14 +196,14 @@ App
 │   └─ Navbar
 ├─ <router-outlet>
 │   ├─ RadarPage ........ PageTitle, SearchFilterBar, MapView, StatTile ×3, FlightCard ×6
-│   ├─ FlightDetailPage . PageTitle, MapView, StatTile ×4, FlightCard ×3
-│   ├─ TrackedPage ...... PageTitle, FlightCard ×3
+│   ├─ FlightDetailPage . PageTitle, MapView, StatTile ×4, FlightCard ×3, EmptyState
+│   ├─ TrackedPage ...... PageTitle, FlightCard ×3, MessageCard ×2, EmptyState
 │   ├─ AirportsPage ..... PageTitle, SearchFilterBar, AirportCard ×4
 │   ├─ LoginPage ........ PageTitle
 │   ├─ RegisterPage ..... PageTitle
-│   ├─ AdminPage ........ PageTitle, StatTile ×3
-│   ├─ AboutPage ........ PageTitle, StatTile ×3
-│   └─ ContactPage ...... PageTitle
+│   ├─ AdminPage ........ PageTitle, StatTile ×3, MessageCard ×3
+│   ├─ AboutPage ........ PageTitle, StatTile ×3, InfoCard ×4
+│   └─ ContactPage ...... PageTitle, InfoCard ×2
 └─ Footer
 ```
 
@@ -220,6 +220,9 @@ App
 | **SearchFilterBar** | `app-search-filter-bar` | `shared/` | Iskalno polje in čipi za filtre | Radar, Letališča |
 | **MapView** | `app-map-view` | `shared/` | Stiliziran zemljevid z ikonami letal | Radar (velik), Podrobnosti (majhen) |
 | **AirportCard** | `app-airport-card` | `shared/` | Kartica letališča: koda, ime, mesto | Letališča (×4) |
+| **InfoCard** | `app-info-card` | `shared/` | Kartica z ikono, naslovom in poljubno vsebino | O aplikaciji (×4), Kontakt (×2) |
+| **MessageCard** | `app-message-card` | `shared/` | Sporočilo ali zapisek z avtorjem, datumom in stanjem | Admin (×3), Sledena (×2) |
+| **EmptyState** | `app-empty-state` | `shared/` | Prikaz, ko ni podatkov | Podrobnosti leta (Pot), Sledena (Opozorila) |
 | RadarPage | `app-radar-page` | `pages/` | Domača stran | usmerjevalnik |
 | FlightDetailPage | `app-flight-detail-page` | `pages/` | Podrobnosti enega leta | usmerjevalnik |
 | TrackedPage | `app-tracked-page` | `pages/` | Sledena letala in zapiski | usmerjevalnik |
@@ -267,7 +270,7 @@ Različna vsebina v ponovno uporabljenih komponentah (npr. drug klicni znak v vs
 | `faBars` | meni na telefonu |
 | `faUserShield` | Admin |
 
-Poleg teh je uporabljenih še 16 ikon: `faArrowLeft`, `faArrowsUpDown`, `faBan`, `faCircleInfo`, `faClock`, `faCode`, `faDatabase`, `faEnvelopeOpen`, `faLock`, `faMountain`, `faPaperPlane`, `faPen`, `faPlus`, `faTrash`, `faUserPlus`, `faUsers` (skupaj 28).
+Poleg teh je uporabljenih še 20 ikon: `faAddressCard`, `faArrowLeft`, `faArrowsUpDown`, `faBan`, `faBell`, `faCircleInfo`, `faClock`, `faCode`, `faDatabase`, `faEnvelopeOpen`, `faLock`, `faMountain`, `faNoteSticky`, `faPaperPlane`, `faPen`, `faPlus`, `faRoute`, `faTrash`, `faUserPlus`, `faUsers` (skupaj 32).
 
 Brez oznak `<i class="fa …">` in brez CDN povezav.
 
@@ -404,8 +407,8 @@ Faze sledijo šestim tednom iz navodil naloge. Izvedba je lahko hitrejša, vrstn
 | 3 | Preostale strani | Admin, O aplikaciji | zaključeno |
 | 3 | Slog | Barvna shema, tipografija, razmiki | zaključeno |
 | 3 | Odzivnost | Prelomne točke, navigacija na telefonu | zaključeno |
-| 4 | Pregled podvajanja | Odstraniti podvojen HTML in CSS, po potrebi nove skupne komponente | načrtovano |
-| 4 | Dodelava | Vizualna hierarhija, prazna stanja, dostopnost (kontrast, oznake polj) | načrtovano |
+| 4 | Pregled podvajanja | Odstraniti podvojen HTML in CSS, po potrebi nove skupne komponente | zaključeno |
+| 4 | Dodelava | Vizualna hierarhija, prazna stanja, dostopnost (kontrast, oznake polj) | zaključeno |
 | 5 | Angular Material | Namestitev, tema, 7 vrst komponent | načrtovano |
 | 5 | Font Awesome | Namestitev, uvoz ikon v TypeScript, `<fa-icon>` | načrtovano |
 | 6 | Preverjanje | Prevajanje brez napak, pregled vseh strani na računalniku in telefonu | načrtovano |
@@ -418,11 +421,11 @@ Naloga zahteva v `README.md` tedenski dnevnik (načrtovano, izdelano, težave, k
 
 | Zahteva | Minimum | Načrt |
 |---|---|---|
-| Lastne komponente | 8 | 18 |
-| Komponente na več mestih | 2 | 6 |
+| Lastne komponente | 8 | 21 |
+| Komponente na več mestih | 2 | 9 |
 | Različni vsebinski prikazi | 4 | 9 strani |
 | Vrste Material komponent | 4 | 7 |
-| Font Awesome ikone | 5 | 28 |
+| Font Awesome ikone | 5 | 32 |
 | Uporabniške vloge | 2 | 3 |
 | Vsebinske funkcionalnosti | 3 | 5 |
 | Odzivnost | osnovna | 3 prelomne točke |
@@ -481,3 +484,14 @@ Dnevnik se piše po fazah. Datume vpiši sam.
 - **Izdelano:** temna "radarska" tema (Material 3, temno modre površine, jantarni poudarek, cian za radarske kroge), vse barve na enem mestu v `styles.scss`; skupni razredi za obrazce, tabele in mreže kartic; trije vizualni obrazci; Admin z zavihki (uporabniki, letališča, sporočila) in navadnimi tabelami; O aplikaciji s ploščicami in karticami; meni z `mat-menu` pod 960 px, preklop samo s CSS; prelomni točki 600 in 960 px.
 - **Težave:** Material meni je povečal začetni paket na 544 kB, kar je nad privzeto mejo opozorila 500 kB; meja je dvignjena na 750 kB (napaka ostane pri 1 MB). Navigacija s petimi povezavami ne gre v eno vrstico že pod 960 px, zato je meni uporabljen do te širine in ne samo do 600 px.
 - **Kaj sledi:** pregled podvajanja HTML in CSS, dodelava vizualne hierarhije in dostopnosti.
+
+### Faza 4 — Pregled podvajanja in dodelava (datum: ____)
+
+- **Načrtovano:** odstraniti podvojen HTML in CSS, po potrebi nove skupne komponente; dodelati vizualno hierarhijo, prazna stanja in dostopnost.
+- **Izdelano:**
+  - Tri nove skupne komponente: **InfoCard** (namesto štirih enakih kartic v O aplikaciji in dveh v Kontaktu), **MessageCard** (namesto ponovljenih sporočil v Adminu in zapiskov v Sledenih) in **EmptyState** (zavihek Pot pri letu, nov zavihek Opozorila pri Sledenih).
+  - Ponavljajoči se slogi so preseljeni v `styles.scss` kot skupni razredi (`stat-grid`, `tab-body`, `card-body`, `full-height`, `prose`, `field-icon`, `data-table`); FlightCard in AirportCard nimata več lastnih kopij istih pravil.
+  - Dostopnost: povezava "Preskoči na vsebino", `aria-current` na aktivni povezavi, noga kot `<nav>`, obvezna polja (`required`) v obrazcih, naslovi kartic kot `<h2>`, jasno viden fokus s tipkovnico. Kontrast besedila je preverjen na vseh 9 straneh (vse ustreza WCAG AA).
+  - Vizualna hierarhija: podnaslovi kartic manj poudarjeni od naslovov.
+- **Težave:** povezave v navigaciji so v predlogi zapisane dvakrat (vrstica za računalnik in meni za telefon). Brez `@for` se temu ni mogoče izogniti, zato je podvajanje ostalo namerno. Prazna stanja so prikazana kot statični primer, saj brez `@if` ni pogojnega prikaza.
+- **Kaj sledi:** faza 5 (Angular Material in Font Awesome sta že vgrajena sproti; preveriti in dokumentirati), faza 6 (preverjanje, posnetki zaslona, oddaja).

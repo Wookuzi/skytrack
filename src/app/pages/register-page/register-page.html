@@ -7,23 +7,23 @@
         <mat-form-field appearance="outline">
           <mat-label>Ime</mat-label>
           <fa-icon matPrefix class="field-icon" [icon]="faUser" />
-          <input matInput type="text" name="name" autocomplete="name" />
+          <input matInput type="text" name="name" autocomplete="name" required />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>E-pošta</mat-label>
           <fa-icon matPrefix class="field-icon" [icon]="faEnvelope" />
-          <input matInput type="email" name="email" autocomplete="email" placeholder="ime@primer.si" />
+          <input matInput type="email" name="email" autocomplete="email" placeholder="ime@primer.si" required />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Geslo</mat-label>
           <fa-icon matPrefix class="field-icon" [icon]="faLock" />
-          <input matInput type="password" name="password" autocomplete="new-password" />
+          <input matInput type="password" name="password" autocomplete="new-password" required />
           <mat-hint>Vsaj 8 znakov</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Ponovi geslo</mat-label>
           <fa-icon matPrefix class="field-icon" [icon]="faLock" />
-          <input matInput type="password" name="password-repeat" autocomplete="new-password" />
+          <input matInput type="password" name="password-repeat" autocomplete="new-password" required />
         </mat-form-field>
         <button mat-flat-button type="button">
           <fa-icon class="button-icon" [icon]="faUserPlus" />Ustvari račun

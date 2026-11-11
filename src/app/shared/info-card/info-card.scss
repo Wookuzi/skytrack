@@ -2,8 +2,11 @@
   display: block;
 }
 
+// Podnaslov je manj poudarjen od naslova.
 .subtitle {
   margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
 
   &:empty {
     display: none;

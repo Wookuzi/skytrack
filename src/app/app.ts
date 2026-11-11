@@ -9,4 +9,10 @@ import { Header } from './layout/header/header';
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
-export class App {}
+export class App {
+  /** Zaradi <base href="/"> bi #main naložil domačo stran, zato fokus premaknemo ročno. */
+  protected skipToMain(event: Event): void {
+    event.preventDefault();
+    document.getElementById('main')?.focus();
+  }
+}
