@@ -1,1 +1,33 @@
-<p>flight-card works!</p>
+<mat-card appearance="outlined" class="card">
+  <mat-card-header>
+    <span mat-card-avatar class="card-avatar" aria-hidden="true">
+      <!-- Ikona kaže proti vzhodu, zato od smeri odštejemo 90°. -->
+      <fa-icon [icon]="faPlane" [style.rotate.deg]="heading() - 90" />
+    </span>
+    <mat-card-title>{{ callsign() }}</mat-card-title>
+    <mat-card-subtitle>{{ country() }} · {{ icao24() }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="content">
+    <dl class="data-list">
+      <div>
+        <dt>Višina</dt>
+        <dd>{{ altitude() | number: '1.0-0' }} m</dd>
+      </div>
+      <div>
+        <dt>Hitrost</dt>
+        <dd>{{ speed() | number: '1.0-0' }} km/h</dd>
+      </div>
+      <div>
+        <dt>Smer</dt>
+        <dd>{{ heading() }}°</dd>
+      </div>
+    </dl>
+    <p class="note">{{ note() }}</p>
+  </mat-card-content>
+  <mat-card-actions class="actions">
+    <mat-chip-set aria-label="Stanje leta">
+      <mat-chip>{{ status() }}</mat-chip>
+    </mat-chip-set>
+    <a mat-button [routerLink]="['/let', icao24()]">Podrobnosti</a>
+  </mat-card-actions>
+</mat-card>

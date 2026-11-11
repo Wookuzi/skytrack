@@ -1,1 +1,21 @@
-<p>airport-card works!</p>
+<mat-card appearance="outlined" class="card">
+  <mat-card-header>
+    <span mat-card-avatar class="card-avatar" aria-hidden="true">
+      <fa-icon [icon]="faPlaneDeparture" />
+    </span>
+    <mat-card-title>{{ name() }}</mat-card-title>
+    <mat-card-subtitle>{{ city() }}, {{ country() }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="content">
+    <dl class="data-list">
+      <div>
+        <dt>IATA</dt>
+        <dd>{{ iata() }}</dd>
+      </div>
+      <div>
+        <dt>ICAO</dt>
+        <dd>{{ icao() }}</dd>
+      </div>
+    </dl>
+  </mat-card-content>
+</mat-card>

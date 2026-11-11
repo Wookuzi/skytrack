@@ -1,0 +1,37 @@
+:host {
+  display: block;
+}
+
+.card {
+  height: 100%;
+}
+
+.content {
+  padding-top: var(--space-4);
+}
+
+.note {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-2) var(--space-4);
+  border-left: 3px solid var(--mat-sys-tertiary);
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+  font-style: italic;
+
+  &::before {
+    content: '„';
+  }
+
+  &::after {
+    content: '“';
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+.actions {
+  justify-content: space-between;
+  margin-top: auto;
+}

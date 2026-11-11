@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+.tile {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+  height: 100%;
+  padding: var(--space-4);
+}
+
+.icon {
+  color: var(--mat-sys-primary);
+  font-size: 20px;
+}
+
+.value {
+  font: var(--mat-sys-headline-small);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.unit {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+}
+
+.label {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-medium);
+}

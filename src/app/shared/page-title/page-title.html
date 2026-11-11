@@ -1,1 +1,8 @@
-<p>page-title works!</p>
+<header class="page-title">
+  <span class="icon" aria-hidden="true"><fa-icon [icon]="icon()" /></span>
+  <div class="text">
+    <h1 class="heading">{{ heading() }}</h1>
+    <p class="subtitle">{{ subtitle() }}</p>
+  </div>
+  <div class="actions"><ng-content /></div>
+</header>

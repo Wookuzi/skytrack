@@ -1,1 +1,43 @@
-<p>map-view works!</p>
+<div class="map" role="img" aria-label="Stiliziran zemljevid z letali nad Slovenijo in okolico">
+  <svg class="background" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <pattern id="map-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path class="grid" d="M 40 0 L 0 0 0 40" />
+      </pattern>
+    </defs>
+    <path
+      class="land"
+      d="M0 0 H800 V330 C740 300 700 350 640 340 S560 300 520 330 S430 400 380 370
+         S300 330 250 360 S150 420 90 390 S30 350 0 370 Z"
+    />
+    <path class="border" d="M150 0 C170 90 120 160 210 230 S330 250 360 330" />
+    <path class="border" d="M520 0 C500 80 560 150 540 230 S600 300 640 340" />
+    <rect width="800" height="500" fill="url(#map-grid)" />
+    <circle class="ring" cx="400" cy="250" r="90" />
+    <circle class="ring" cx="400" cy="250" r="180" />
+    <circle class="ring" cx="400" cy="250" r="270" />
+    <line class="axis" x1="400" y1="0" x2="400" y2="500" />
+    <line class="axis" x1="0" y1="250" x2="800" y2="250" />
+    <circle class="center" cx="400" cy="250" r="4" />
+  </svg>
+
+  <!-- Položaji in smeri vzorčnih letov; --heading je smer v stopinjah. -->
+  <span class="plane focus" style="left: 62%; top: 30%; --heading: 208deg">
+    <fa-icon [icon]="faPlane" /><span class="label">RYR5PC</span>
+  </span>
+  <span class="plane" style="left: 30%; top: 58%; --heading: 299deg">
+    <fa-icon [icon]="faPlane" /><span class="label">THY72B</span>
+  </span>
+  <span class="plane" style="left: 76%; top: 62%; --heading: 128deg">
+    <fa-icon [icon]="faPlane" /><span class="label">QTR34E</span>
+  </span>
+  <span class="plane" style="left: 44%; top: 42%; --heading: 312deg">
+    <fa-icon [icon]="faPlane" /><span class="label">CTN436R</span>
+  </span>
+  <span class="plane" style="left: 18%; top: 24%; --heading: 128deg">
+    <fa-icon [icon]="faPlane" /><span class="label">TVF44AG</span>
+  </span>
+  <span class="plane" style="left: 54%; top: 76%; --heading: 76deg">
+    <fa-icon [icon]="faPlane" /><span class="label">WMT4WE</span>
+  </span>
+</div>
