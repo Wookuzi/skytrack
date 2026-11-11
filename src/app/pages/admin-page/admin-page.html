@@ -1,3 +1,171 @@
 <div class="page">
-  <app-page-title heading="Administracija" subtitle="Uporabniki, letališča in prejeta sporočila" [icon]="icon" />
+  <app-page-title
+    heading="Administracija"
+    subtitle="Uporabniki, letališča in prejeta sporočila"
+    [icon]="faUserShield"
+  />
+
+  <div class="stats">
+    <app-stat-tile label="Uporabnikov" value="128" [icon]="faUsers" />
+    <app-stat-tile label="Sledenih letal" value="342" [icon]="faStar" />
+    <app-stat-tile label="Novih sporočil" value="2" [icon]="faEnvelope" />
+  </div>
+
+  <mat-card appearance="outlined">
+    <mat-tab-group>
+      <!-- Uporabniki -->
+      <mat-tab label="Uporabniki">
+        <div class="tab-body table-wrap">
+          <table class="data-table">
+            <caption>Registrirani uporabniki</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ime</th>
+                <th scope="col">E-pošta</th>
+                <th scope="col">Vloga</th>
+                <th scope="col">Ustvarjen</th>
+                <th scope="col"><span class="visually-hidden">Dejanja</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana Novak</td>
+                <td>ana.novak&#64;example.com</td>
+                <td><mat-chip-set aria-label="Vloga"><mat-chip highlighted>Administrator</mat-chip></mat-chip-set></td>
+                <td>2. 9. 2026</td>
+                <td class="actions">
+                  <button mat-icon-button type="button" aria-label="Uredi uporabnika Ana Novak"><fa-icon [icon]="faPen" /></button>
+                  <button mat-icon-button type="button" aria-label="Blokiraj uporabnika Ana Novak"><fa-icon [icon]="faBan" /></button>
+                </td>
+              </tr>
+              <tr>
+                <td>Marko Kranjc</td>
+                <td>marko.kranjc&#64;example.com</td>
+                <td><mat-chip-set aria-label="Vloga"><mat-chip>Uporabnik</mat-chip></mat-chip-set></td>
+                <td>14. 10. 2026</td>
+                <td class="actions">
+                  <button mat-icon-button type="button" aria-label="Uredi uporabnika Marko Kranjc"><fa-icon [icon]="faPen" /></button>
+                  <button mat-icon-button type="button" aria-label="Blokiraj uporabnika Marko Kranjc"><fa-icon [icon]="faBan" /></button>
+                </td>
+              </tr>
+              <tr>
+                <td>Nina Zupan</td>
+                <td>nina.zupan&#64;example.com</td>
+                <td><mat-chip-set aria-label="Vloga"><mat-chip>Uporabnik</mat-chip></mat-chip-set></td>
+                <td>3. 11. 2026</td>
+                <td class="actions">
+                  <button mat-icon-button type="button" aria-label="Uredi uporabnika Nina Zupan"><fa-icon [icon]="faPen" /></button>
+                  <button mat-icon-button type="button" aria-label="Blokiraj uporabnika Nina Zupan"><fa-icon [icon]="faBan" /></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-tab>
+
+      <!-- Letališča -->
+      <mat-tab label="Letališča">
+        <div class="tab-body">
+          <button mat-flat-button type="button" class="add">
+            <fa-icon class="button-icon" [icon]="faPlus" />Dodaj letališče
+          </button>
+          <div class="table-wrap">
+            <table class="data-table">
+              <caption>Šifrant letališč</caption>
+              <thead>
+                <tr>
+                  <th scope="col">ICAO</th>
+                  <th scope="col">IATA</th>
+                  <th scope="col">Ime</th>
+                  <th scope="col">Država</th>
+                  <th scope="col"><span class="visually-hidden">Dejanja</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>LJLJ</td>
+                  <td>LJU</td>
+                  <td>Letališče Jožeta Pučnika Ljubljana</td>
+                  <td>Slovenija</td>
+                  <td class="actions">
+                    <button mat-icon-button type="button" aria-label="Uredi LJLJ"><fa-icon [icon]="faPen" /></button>
+                    <button mat-icon-button type="button" aria-label="Izbriši LJLJ"><fa-icon [icon]="faTrash" /></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>LJMB</td>
+                  <td>MBX</td>
+                  <td>Letališče Edvarda Rusjana Maribor</td>
+                  <td>Slovenija</td>
+                  <td class="actions">
+                    <button mat-icon-button type="button" aria-label="Uredi LJMB"><fa-icon [icon]="faPen" /></button>
+                    <button mat-icon-button type="button" aria-label="Izbriši LJMB"><fa-icon [icon]="faTrash" /></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>LJPZ</td>
+                  <td>POW</td>
+                  <td>Letališče Portorož</td>
+                  <td>Slovenija</td>
+                  <td class="actions">
+                    <button mat-icon-button type="button" aria-label="Uredi LJPZ"><fa-icon [icon]="faPen" /></button>
+                    <button mat-icon-button type="button" aria-label="Izbriši LJPZ"><fa-icon [icon]="faTrash" /></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>LDZA</td>
+                  <td>ZAG</td>
+                  <td>Letališče Franjo Tuđman Zagreb</td>
+                  <td>Hrvaška</td>
+                  <td class="actions">
+                    <button mat-icon-button type="button" aria-label="Uredi LDZA"><fa-icon [icon]="faPen" /></button>
+                    <button mat-icon-button type="button" aria-label="Izbriši LDZA"><fa-icon [icon]="faTrash" /></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Sporočila -->
+      <mat-tab label="Sporočila (2)">
+        <div class="tab-body messages">
+          <article class="message new">
+            <header class="message-head">
+              <fa-icon class="message-icon" [icon]="faEnvelope" />
+              <div class="message-meta">
+                <strong>Napačna višina pri letu CTN436R</strong>
+                <span>Marko Kranjc · 10. 11. 2026</span>
+              </div>
+              <mat-chip-set aria-label="Stanje"><mat-chip highlighted>Novo</mat-chip></mat-chip-set>
+            </header>
+            <p>Višina se je za nekaj sekund prikazala kot 0 m, čeprav je letalo letelo.</p>
+          </article>
+          <article class="message new">
+            <header class="message-head">
+              <fa-icon class="message-icon" [icon]="faEnvelope" />
+              <div class="message-meta">
+                <strong>Predlog: filter po letalski družbi</strong>
+                <span>Gost · 9. 11. 2026</span>
+              </div>
+              <mat-chip-set aria-label="Stanje"><mat-chip highlighted>Novo</mat-chip></mat-chip-set>
+            </header>
+            <p>Bilo bi super, če bi lahko prikazal samo lete izbrane družbe.</p>
+          </article>
+          <article class="message">
+            <header class="message-head">
+              <fa-icon class="message-icon" [icon]="faEnvelopeOpen" />
+              <div class="message-meta">
+                <strong>Hvala za aplikacijo</strong>
+                <span>Nina Zupan · 4. 11. 2026</span>
+              </div>
+              <mat-chip-set aria-label="Stanje"><mat-chip>Prebrano</mat-chip></mat-chip-set>
+            </header>
+            <p>Uporabljam jo za spotting na Brniku. Odlično!</p>
+          </article>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
 </div>

@@ -247,7 +247,7 @@ Različna vsebina v ponovno uporabljenih komponentah (npr. drug klicni znak v vs
 | Card (`mat-card`) | FlightCard, AirportCard, StatTile, obrazci |
 | Form field + Input (`mat-form-field`, `matInput`) | Prijava, Registracija, Kontakt, SearchFilterBar |
 | Tabs (`mat-tab-group`) | Podrobnosti leta, Sledena, Admin |
-| Menu (`mat-menu`) | Navbar na telefonu, uporabniški meni |
+| Menu (`mat-menu`) | Navbar na ozkem zaslonu (gumb s tremi črtami) |
 | Chips (`mat-chip-set`) | SearchFilterBar (filtri), FlightCard (stanje) |
 
 **Font Awesome** — vsaj 12 ikon (zahtevanih 5), uvoženih v TypeScript in prikazanih s `<fa-icon>`:
@@ -267,6 +267,8 @@ Različna vsebina v ponovno uporabljenih komponentah (npr. drug klicni znak v vs
 | `faBars` | meni na telefonu |
 | `faUserShield` | Admin |
 
+Poleg teh je uporabljenih še 16 ikon: `faArrowLeft`, `faArrowsUpDown`, `faBan`, `faCircleInfo`, `faClock`, `faCode`, `faDatabase`, `faEnvelopeOpen`, `faLock`, `faMountain`, `faPaperPlane`, `faPen`, `faPlus`, `faTrash`, `faUserPlus`, `faUsers` (skupaj 28).
+
 Brez oznak `<i class="fa …">` in brez CDN povezav.
 
 ---
@@ -278,8 +280,9 @@ Brez oznak `<i class="fa …">` in brez CDN povezav.
 - **Tipografija:** Roboto (privzeta za Material); številke v ploščicah z enako širokimi števkami.
 - **Razmiki:** enotna lestvica 4 / 8 / 16 / 24 / 32 px.
 - **Prelomne točke:**
-  - do 600 px: en stolpec, navigacija v meniju, zemljevid nad seznamom;
-  - 600–960 px: dva stolpca kartic;
+  - do 600 px: en stolpec, zemljevid nad seznamom;
+  - 600–960 px: dva stolpca kartic, zemljevid nad seznamom;
+  - pod 960 px: navigacija v meniju (gumb s tremi črtami), ker povezave ne gredo več v eno vrstico;
   - nad 960 px: zemljevid in stranski seznam drug ob drugem, tri do štiri kartice v vrsti.
 - **Zemljevid:** lasten stiliziran SVG (mreža, krogi dosega, obris), na njem ikone letal, postavljene in zasukane s CSS. Brez zunanjih slik, zato ni vprašanj glede licenc.
 
@@ -397,10 +400,10 @@ Faze sledijo šestim tednom iz navodil naloge. Izvedba je lahko hitrejša, vrstn
 | 2 | Postavitev | Header, Navbar, Footer, usmerjanje, prazne strani | zaključeno |
 | 2 | Skupne komponente | PageTitle, FlightCard, StatTile, SearchFilterBar, MapView, AirportCard | zaključeno |
 | 2 | Osnovni prikazi | Radar, Podrobnosti leta, Sledena, Letališča s statično vsebino | zaključeno |
-| 3 | Obrazci | Prijava, Registracija, Kontakt | načrtovano |
-| 3 | Preostale strani | Admin, O aplikaciji | načrtovano |
-| 3 | Slog | Barvna shema, tipografija, razmiki | načrtovano |
-| 3 | Odzivnost | Prelomne točke, navigacija na telefonu | načrtovano |
+| 3 | Obrazci | Prijava, Registracija, Kontakt | zaključeno |
+| 3 | Preostale strani | Admin, O aplikaciji | zaključeno |
+| 3 | Slog | Barvna shema, tipografija, razmiki | zaključeno |
+| 3 | Odzivnost | Prelomne točke, navigacija na telefonu | zaključeno |
 | 4 | Pregled podvajanja | Odstraniti podvojen HTML in CSS, po potrebi nove skupne komponente | načrtovano |
 | 4 | Dodelava | Vizualna hierarhija, prazna stanja, dostopnost (kontrast, oznake polj) | načrtovano |
 | 5 | Angular Material | Namestitev, tema, 7 vrst komponent | načrtovano |
@@ -419,7 +422,7 @@ Naloga zahteva v `README.md` tedenski dnevnik (načrtovano, izdelano, težave, k
 | Komponente na več mestih | 2 | 6 |
 | Različni vsebinski prikazi | 4 | 9 strani |
 | Vrste Material komponent | 4 | 7 |
-| Font Awesome ikone | 5 | 12 |
+| Font Awesome ikone | 5 | 28 |
 | Uporabniške vloge | 2 | 3 |
 | Vsebinske funkcionalnosti | 3 | 5 |
 | Odzivnost | osnovna | 3 prelomne točke |
@@ -471,3 +474,10 @@ Dnevnik se piše po fazah. Datume vpiši sam.
 - **Izdelano:** vseh 18 komponent; postavitev z `mat-toolbar` in povezavami usmerjevalnika; skupne komponente PageTitle, FlightCard, StatTile, SearchFilterBar, MapView (lasten SVG zemljevid) in AirportCard z vhodnimi podatki (`input()`); štiri strani z vzorčnimi podatki iz OpenSky; preostalih pet strani ima naslov in čaka na fazo 3. Material (toolbar, button, card, chips, form field, tabs) in Font Awesome sta vgrajena sproti.
 - **Težave:** začetni paket je presegel omejitev 500 kB; rešeno z nalaganjem strani po potrebi (`loadComponent`). Brez `@if` se prazni deli (npr. kartica brez zapiska) skrijejo s CSS `:empty`.
 - **Kaj sledi:** obrazci (Prijava, Registracija, Kontakt), strani Admin in O aplikaciji, temna tema, navigacija na telefonu.
+
+### Faza 3 — Obrazci, preostale strani, slog in odzivnost (datum: ____)
+
+- **Načrtovano:** obrazci za prijavo, registracijo in kontakt; strani Admin in O aplikaciji; barvna shema, tipografija in razmiki; prelomne točke in navigacija na telefonu.
+- **Izdelano:** temna "radarska" tema (Material 3, temno modre površine, jantarni poudarek, cian za radarske kroge), vse barve na enem mestu v `styles.scss`; skupni razredi za obrazce, tabele in mreže kartic; trije vizualni obrazci; Admin z zavihki (uporabniki, letališča, sporočila) in navadnimi tabelami; O aplikaciji s ploščicami in karticami; meni z `mat-menu` pod 960 px, preklop samo s CSS; prelomni točki 600 in 960 px.
+- **Težave:** Material meni je povečal začetni paket na 544 kB, kar je nad privzeto mejo opozorila 500 kB; meja je dvignjena na 750 kB (napaka ostane pri 1 MB). Navigacija s petimi povezavami ne gre v eno vrstico že pod 960 px, zato je meni uporabljen do te širine in ne samo do 600 px.
+- **Kaj sledi:** pregled podvajanja HTML in CSS, dodelava vizualne hierarhije in dostopnosti.
