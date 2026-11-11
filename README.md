@@ -4,6 +4,8 @@ Spletni sledilnik letal: zemljevid z letali v živo, podrobnosti posameznega let
 
 Projektna naloga *Načrtovanje spletne aplikacije in izdelava komponentno zasnovanega čelnega dela*. Čelni del je izdelan v Angularju 22 s statično vsebino, z Angular Material in Font Awesome.
 
+Repozitorij: <https://github.com/Wookuzi/skytrack>
+
 ## Hiter začetek
 
 Potrebuješ Node.js 24 LTS (ali drugo različico, ki jo podpira Angular CLI 22: `^22.22.3`, `^24.15.0` ali `>=26`).
@@ -417,7 +419,7 @@ Faze sledijo šestim tednom iz navodil naloge. Izvedba je lahko hitrejša, vrstn
 | 5 | Font Awesome | Namestitev, uvoz ikon v TypeScript, `<fa-icon>` | zaključeno |
 | 6 | Preverjanje | Prevajanje brez napak, pregled vseh strani na računalniku in telefonu | zaključeno |
 | 6 | Dokumentacija | Dokončan `README.md` z vsemi zahtevanimi razdelki | zaključeno |
-| 6 | Oddaja | Posnetki zaslona, posodobljena tabla, objava repozitorija, predstavitev | delno: posnetki narejeni; tabla, objava in predstavitev odprte |
+| 6 | Oddaja | Posnetki zaslona, posodobljena tabla, objava repozitorija, predstavitev | delno: posnetki in objava narejeni; tabla in predstavitev odprti |
 
 Naloga zahteva v `README.md` tedenski dnevnik (načrtovano, izdelano, težave, kaj sledi). Dnevnik se piše po fazah z dejanskim potekom dela; datume vpišeš sam.
 
@@ -539,4 +541,5 @@ Dnevnik se piše po fazah. Datume vpiši sam.
 - **Načrtovano:** prevajanje brez napak, pregled vseh strani na računalniku in telefonu, dokončan README, posnetki zaslona, oddaja.
 - **Izdelano:** `ng build` brez napak in opozoril; vseh 9 poti pregledanih na 1440 px in 375 px (brez vodoravnega drsenja, brez napak v konzoli, kontrast besedila ustreza WCAG AA); v kodi ni `@if`, `@for`, `*ngIf`, `*ngFor` in `class="fa`; 18 posnetkov zaslona v `docs/posnetki/` (Firefox brez okna); osnutki zaslonov kot slike v `docs/osnutki/`; README dopolnjen.
 - **Težave:** brez posebnosti.
-- **Kaj sledi:** GitHub Projects tabla, objava repozitorija na GitHubu, predstavitev.
+- **Objava:** javen repozitorij <https://github.com/Wookuzi/skytrack>.
+- **Kaj sledi:** GitHub Projects tabla, predstavitev.
