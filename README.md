@@ -180,13 +180,13 @@ Prijava (telefon):
 └───────────────────┘
 ```
 
-Za oddajo je treba te osnutke pretvoriti v slike ali PDF (glej razdelek 11).
+Osnutki so shranjeni tudi kot slike v mapi [`docs/osnutki/`](docs/osnutki/): [Radar](docs/osnutki/1-radar.png), [Podrobnosti leta](docs/osnutki/2-podrobnosti-leta.png), [Sledena letala](docs/osnutki/3-sledena-letala.png), [Prijava (telefon)](docs/osnutki/4-prijava-telefon.png). Končni videz je na posnetkih zaslona v razdelku 14.
 
 ---
 
 ## 6. Angular komponente
 
-Skupaj **21 lastnih komponent** (zahtevanih 8), od tega **9 uporabljenih na več mestih** (zahtevani 2). Komponente InfoCard, MessageCard in EmptyState so nastale v 4. fazi pri pregledu podvajanja.
+Skupaj **22 lastnih komponent** (zahtevanih 8), od tega **10 uporabljenih na več mestih** (zahtevani 2). Komponente InfoCard, MessageCard in EmptyState so nastale v 4. fazi pri pregledu podvajanja, Gauge pri prenovi videza.
 
 ### Hierarhija
 
@@ -195,8 +195,8 @@ App
 ├─ Header
 │   └─ Navbar
 ├─ <router-outlet>
-│   ├─ RadarPage ........ PageTitle, SearchFilterBar, MapView, StatTile ×3, FlightCard ×6
-│   ├─ FlightDetailPage . PageTitle, MapView, StatTile ×4, FlightCard ×3, EmptyState
+│   ├─ RadarPage ........ PageTitle, SearchFilterBar, MapView, Gauge ×2, StatTile ×3, FlightCard ×6
+│   ├─ FlightDetailPage . PageTitle, MapView, Gauge ×2, StatTile ×2, FlightCard ×3, EmptyState
 │   ├─ TrackedPage ...... PageTitle, FlightCard ×3, MessageCard ×2, EmptyState
 │   ├─ AirportsPage ..... PageTitle, SearchFilterBar, AirportCard ×4
 │   ├─ LoginPage ........ PageTitle
@@ -211,18 +211,19 @@ App
 
 | Komponenta | Selektor | Mapa | Namen | Uporabljena v |
 |---|---|---|---|---|
-| Header | `app-header` | `layout/` | Orodna vrstica z logotipom in navigacijo | App |
-| Navbar | `app-navbar` | `layout/` | Povezave med stranmi, meni na telefonu, gumb Prijava | Header |
+| Header | `app-header` | `layout/` | Zgornja vrstica: stanje zračnega prostora, iskanje, prijava | App |
+| Navbar | `app-navbar` | `layout/` | Levi pas ikon (računalnik) oziroma meni (telefon) | Header |
 | Footer | `app-footer` | `layout/` | Avtorstvo, vir podatkov, povezave | App |
 | **PageTitle** | `app-page-title` | `shared/` | Naslov in podnaslov strani z ikono | vseh 9 strani |
 | **FlightCard** | `app-flight-card` | `shared/` | Kartica leta: klicni znak, država, višina, hitrost | Radar, Podrobnosti, Sledena |
 | **StatTile** | `app-stat-tile` | `shared/` | Ploščica z eno številko in oznako | Radar, Podrobnosti, Admin, O aplikaciji |
 | **SearchFilterBar** | `app-search-filter-bar` | `shared/` | Iskalno polje in čipi za filtre | Radar, Letališča |
-| **MapView** | `app-map-view` | `shared/` | Stiliziran zemljevid z ikonami letal | Radar (velik), Podrobnosti (majhen) |
+| **MapView** | `app-map-view` | `shared/` | Stiliziran temen zemljevid z letali, kompasom in lebdečo kartico | Radar (velik), Podrobnosti (majhen) |
 | **AirportCard** | `app-airport-card` | `shared/` | Kartica letališča: koda, ime, mesto | Letališča (×4) |
 | **InfoCard** | `app-info-card` | `shared/` | Kartica z ikono, naslovom in poljubno vsebino | O aplikaciji (×4), Kontakt (×2) |
 | **MessageCard** | `app-message-card` | `shared/` | Sporočilo ali zapisek z avtorjem, datumom in stanjem | Admin (×3), Sledena (×2) |
 | **EmptyState** | `app-empty-state` | `shared/` | Prikaz, ko ni podatkov | Podrobnosti leta (Pot), Sledena (Opozorila) |
+| **Gauge** | `app-gauge` | `shared/` | Polkrožni merilnik (hitrost, višina) | Radar (×2), Podrobnosti leta (×2) |
 | RadarPage | `app-radar-page` | `pages/` | Domača stran | usmerjevalnik |
 | FlightDetailPage | `app-flight-detail-page` | `pages/` | Podrobnosti enega leta | usmerjevalnik |
 | TrackedPage | `app-tracked-page` | `pages/` | Sledena letala in zapiski | usmerjevalnik |
@@ -241,36 +242,37 @@ Različna vsebina v ponovno uporabljenih komponentah (npr. drug klicni znak v vs
 
 ## 7. Angular Material in Font Awesome
 
-**Angular Material** — 7 vrst komponent (zahtevane 4):
+**Angular Material** — 8 vrst komponent (zahtevane 4):
 
 | Komponenta | Kje |
 |---|---|
-| Toolbar (`mat-toolbar`) | Header |
-| Button (`mat-button`, `mat-flat-button`, `mat-icon-button`) | Navbar, obrazci, kartice |
-| Card (`mat-card`) | FlightCard, AirportCard, StatTile, obrazci |
+| Toolbar (`mat-toolbar`) | Header (zgornja vrstica) |
+| Button (`mat-button`, `mat-flat-button`, `mat-stroked-button`, `mat-icon-button`) | Navbar, Header, obrazci, kartice, zemljevid |
+| Card (`mat-card`) | FlightCard, AirportCard, StatTile, InfoCard, obrazci, lebdeča kartica na zemljevidu |
 | Form field + Input (`mat-form-field`, `matInput`) | Prijava, Registracija, Kontakt, SearchFilterBar |
 | Tabs (`mat-tab-group`) | Podrobnosti leta, Sledena, Admin |
 | Menu (`mat-menu`) | Navbar na ozkem zaslonu (gumb s tremi črtami) |
-| Chips (`mat-chip-set`) | SearchFilterBar (filtri), FlightCard (stanje) |
+| Tooltip (`matTooltip`) | Navbar: opisi ikon v levem pasu |
+| Chips (`mat-chip-listbox`, `mat-chip-set`) | filtri (Radar, Letališča), oznake stanja (FlightCard, MessageCard, Admin) |
 
 **Font Awesome** — vsaj 12 ikon (zahtevanih 5), uvoženih v TypeScript in prikazanih s `<fa-icon>`:
 
 | Ikona | Kje |
 |---|---|
 | `faPlane` | logotip, ikone letal na zemljevidu, FlightCard |
-| `faMapLocationDot` | Navbar (Radar) |
+| `faMapLocationDot` | Navbar (Radar), naslov strani Radar |
 | `faStar` | Navbar (Sledena), gumb Sledi |
 | `faPlaneDeparture` | Navbar (Letališča), AirportCard |
 | `faMagnifyingGlass` | SearchFilterBar |
-| `faUser` | Navbar, obrazci |
+| `faUser` | obrazca Registracija |
 | `faRightToBracket` | gumb Prijava |
-| `faGaugeHigh` | StatTile (hitrost) |
+| `faGaugeHigh` | StatTile (največja hitrost, kvota) |
 | `faCompass` | StatTile (smer) |
 | `faEnvelope` | Kontakt, noga |
 | `faBars` | meni na telefonu |
 | `faUserShield` | Admin |
 
-Poleg teh je uporabljenih še 20 ikon: `faAddressCard`, `faArrowLeft`, `faArrowsUpDown`, `faBan`, `faBell`, `faCircleInfo`, `faClock`, `faCode`, `faDatabase`, `faEnvelopeOpen`, `faLock`, `faMountain`, `faNoteSticky`, `faPaperPlane`, `faPen`, `faPlus`, `faRoute`, `faTrash`, `faUserPlus`, `faUsers` (skupaj 32).
+Poleg teh je uporabljenih še 22 ikon: `faAddressCard`, `faArrowLeft`, `faArrowRight`, `faArrowsUpDown`, `faBan`, `faBell`, `faCircleInfo`, `faClock`, `faCode`, `faDatabase`, `faEnvelopeOpen`, `faLocationCrosshairs`, `faLock`, `faMinus`, `faNoteSticky`, `faPaperPlane`, `faPen`, `faPlus`, `faRoute`, `faTrash`, `faUserPlus`, `faUsers` (skupaj 34).
 
 Brez oznak `<i class="fa …">` in brez CDN povezav.
 
@@ -278,16 +280,18 @@ Brez oznak `<i class="fa …">` in brez CDN povezav.
 
 ## 8. Videz in odzivnost
 
-- **Slog:** temna "radarska" tema. Temno modro ozadje, svetlo besedilo, en poudarek (jantarna) za dejanja in izbrano stanje.
-- **Tema:** Angular Material 3, barve določene enkrat v `styles.scss` kot CSS spremenljivke; komponente ne vsebujejo svojih barvnih vrednosti.
-- **Tipografija:** Roboto (privzeta za Material); številke v ploščicah z enako širokimi števkami.
+- **Slog:** temna, nevtralna nadzorna plošča (zgled: posnetek "Haulix" na Dribbblu, prevzet je samo slog, ne vsebina). Skoraj črno ozadje, oglje-sive kartice z velikim polmerom in tanko obrobo, en limetin poudarek (`#d4f36a`) za glavna dejanja in izbrano stanje. Oznake stanja: zelena (v redu), oranžna (opozorilo), rdeča (napaka).
+- **Tema:** Angular Material 3, vse barve in prilagoditve komponent (kartice, gumbi v obliki tabletke, čipi, polja, zavihki, namigi) so določene enkrat v `styles.scss`; komponente ne vsebujejo svojih barvnih vrednosti.
+- **Tipografija:** Inter (Google Fonts); številke z enako širokimi števkami.
 - **Razmiki:** enotna lestvica 4 / 8 / 16 / 24 / 32 px.
+- **Postavitev:** na računalniku ozek pas ikon na levi (z namigi), zgoraj vrstica s stanjem zračnega prostora, iskanjem in prijavo.
 - **Prelomne točke:**
-  - do 600 px: en stolpec, zemljevid nad seznamom;
-  - 600–960 px: dva stolpca kartic, zemljevid nad seznamom;
-  - pod 960 px: navigacija v meniju (gumb s tremi črtami), ker povezave ne gredo več v eno vrstico;
-  - nad 960 px: zemljevid in stranski seznam drug ob drugem, tri do štiri kartice v vrsti.
-- **Zemljevid:** lasten stiliziran SVG (mreža, krogi dosega, obris), na njem ikone letal, postavljene in zasukane s CSS. Brez zunanjih slik, zato ni vprašanj glede licenc.
+  - do 600 px: en stolpec, nižji zemljevid, lebdeča kartica na zemljevidu skrita;
+  - 600–960 px: dva stolpca kartic;
+  - pod 960 px: navigacija v meniju (gumb s tremi črtami), logotip v zgornji vrstici;
+  - od 960 px: levi pas ikon, iskalno polje in gumb Prijava v zgornji vrstici;
+  - od 1200 px: zemljevid in seznam letov drug ob drugem, tabletke s stanjem v zgornji vrstici.
+- **Zemljevid:** lasten stiliziran SVG (ulice, glavne ceste, reka, krogi dosega, pot izbranega leta), ikone letal postavljene in zasukane s CSS, kompas in gumbi za povečavo. Brez zunanjih slik, zato ni vprašanj glede licenc. Utripanje izbranega letala se ob nastavitvi "zmanjšaj gibanje" izklopi.
 
 ---
 
@@ -396,7 +400,7 @@ Faze sledijo šestim tednom iz navodil naloge. Izvedba je lahko hitrejša, vrstn
 |---|---|---|---|
 | 1 | Načrt aplikacije | Ta dokument: opis, vloge, funkcionalnosti, podatkovni model | zaključeno |
 | 1 | Izbira API-ja | Izbira in preverjanje OpenSky Network | zaključeno |
-| 1 | Osnutki zaslonov | Osnutke iz razdelka 5 pretvoriti v slike ali PDF | načrtovano |
+| 1 | Osnutki zaslonov | Osnutke iz razdelka 5 pretvoriti v slike ali PDF | zaključeno |
 | 1 | Tabla nalog | Ustvariti GitHub Projects tablo in vnesti naloge iz te tabele | načrtovano |
 | 1 | Okolje | Namestiti Node 24 in Angular CLI | zaključeno |
 | 1 | Angular projekt | `ng new`, prvi commit, osnovni `README.md` | zaključeno |
@@ -409,11 +413,11 @@ Faze sledijo šestim tednom iz navodil naloge. Izvedba je lahko hitrejša, vrstn
 | 3 | Odzivnost | Prelomne točke, navigacija na telefonu | zaključeno |
 | 4 | Pregled podvajanja | Odstraniti podvojen HTML in CSS, po potrebi nove skupne komponente | zaključeno |
 | 4 | Dodelava | Vizualna hierarhija, prazna stanja, dostopnost (kontrast, oznake polj) | zaključeno |
-| 5 | Angular Material | Namestitev, tema, 7 vrst komponent | načrtovano |
-| 5 | Font Awesome | Namestitev, uvoz ikon v TypeScript, `<fa-icon>` | načrtovano |
-| 6 | Preverjanje | Prevajanje brez napak, pregled vseh strani na računalniku in telefonu | načrtovano |
-| 6 | Dokumentacija | Dokončan `README.md` z vsemi zahtevanimi razdelki | načrtovano |
-| 6 | Oddaja | Posnetki zaslona, posodobljena tabla, objava repozitorija, predstavitev | načrtovano |
+| 5 | Angular Material | Namestitev, tema, 8 vrst komponent | zaključeno |
+| 5 | Font Awesome | Namestitev, uvoz ikon v TypeScript, `<fa-icon>` | zaključeno |
+| 6 | Preverjanje | Prevajanje brez napak, pregled vseh strani na računalniku in telefonu | zaključeno |
+| 6 | Dokumentacija | Dokončan `README.md` z vsemi zahtevanimi razdelki | zaključeno |
+| 6 | Oddaja | Posnetki zaslona, posodobljena tabla, objava repozitorija, predstavitev | delno: posnetki narejeni; tabla, objava in predstavitev odprte |
 
 Naloga zahteva v `README.md` tedenski dnevnik (načrtovano, izdelano, težave, kaj sledi). Dnevnik se piše po fazah z dejanskim potekom dela; datume vpišeš sam.
 
@@ -421,11 +425,11 @@ Naloga zahteva v `README.md` tedenski dnevnik (načrtovano, izdelano, težave, k
 
 | Zahteva | Minimum | Načrt |
 |---|---|---|
-| Lastne komponente | 8 | 21 |
-| Komponente na več mestih | 2 | 9 |
+| Lastne komponente | 8 | 22 |
+| Komponente na več mestih | 2 | 10 |
 | Različni vsebinski prikazi | 4 | 9 strani |
-| Vrste Material komponent | 4 | 7 |
-| Font Awesome ikone | 5 | 32 |
+| Vrste Material komponent | 4 | 8 |
+| Font Awesome ikone | 5 | 34 |
 | Uporabniške vloge | 2 | 3 |
 | Vsebinske funkcionalnosti | 3 | 5 |
 | Odzivnost | osnovna | 3 prelomne točke |
@@ -460,7 +464,27 @@ Naloga zahteva v `README.md` tedenski dnevnik (načrtovano, izdelano, težave, k
 
 ---
 
-## 14. Dnevnik dela
+## 14. Posnetki zaslona
+
+Posnetki vseh 9 strani na širini računalnika (1440 × 900) in telefona (375 × 812) so v mapi [`docs/posnetki/`](docs/posnetki/).
+
+![Radar na računalniku](docs/posnetki/01-radar-racunalnik.png)
+
+| Stran | Računalnik | Telefon |
+|---|---|---|
+| Radar | [računalnik](docs/posnetki/01-radar-racunalnik.png) | [telefon](docs/posnetki/01-radar-telefon.png) |
+| Podrobnosti leta | [računalnik](docs/posnetki/02-podrobnosti-leta-racunalnik.png) | [telefon](docs/posnetki/02-podrobnosti-leta-telefon.png) |
+| Sledena letala | [računalnik](docs/posnetki/03-sledena-racunalnik.png) | [telefon](docs/posnetki/03-sledena-telefon.png) |
+| Letališča | [računalnik](docs/posnetki/04-letalisca-racunalnik.png) | [telefon](docs/posnetki/04-letalisca-telefon.png) |
+| Prijava | [računalnik](docs/posnetki/05-prijava-racunalnik.png) | [telefon](docs/posnetki/05-prijava-telefon.png) |
+| Registracija | [računalnik](docs/posnetki/06-registracija-racunalnik.png) | [telefon](docs/posnetki/06-registracija-telefon.png) |
+| Administracija | [računalnik](docs/posnetki/07-admin-racunalnik.png) | [telefon](docs/posnetki/07-admin-telefon.png) |
+| O aplikaciji | [računalnik](docs/posnetki/08-o-aplikaciji-racunalnik.png) | [telefon](docs/posnetki/08-o-aplikaciji-telefon.png) |
+| Kontakt | [računalnik](docs/posnetki/09-kontakt-racunalnik.png) | [telefon](docs/posnetki/09-kontakt-telefon.png) |
+
+---
+
+## 15. Dnevnik dela
 
 Dnevnik se piše po fazah. Datume vpiši sam.
 
@@ -495,3 +519,24 @@ Dnevnik se piše po fazah. Datume vpiši sam.
   - Vizualna hierarhija: podnaslovi kartic manj poudarjeni od naslovov.
 - **Težave:** povezave v navigaciji so v predlogi zapisane dvakrat (vrstica za računalnik in meni za telefon). Brez `@for` se temu ni mogoče izogniti, zato je podvajanje ostalo namerno. Prazna stanja so prikazana kot statični primer, saj brez `@if` ni pogojnega prikaza.
 - **Kaj sledi:** faza 5 (Angular Material in Font Awesome sta že vgrajena sproti; preveriti in dokumentirati), faza 6 (preverjanje, posnetki zaslona, oddaja).
+
+### Prenova videza (datum: ____)
+
+- **Načrtovano:** sodobnejši, bolj "nadzorni" videz po zgledu posnetka "Haulix" (Phenomenon Studio) na Dribbblu; prevzet je samo slog, ne vsebina ali blagovna znamka.
+- **Izdelano:** nevtralna temna tema s skoraj črnim ozadjem in limetinim poudarkom, pisava Inter, prilagoditve Material komponent na enem mestu (kartice, gumbi v obliki tabletke, čipi, polja, zavihki, namigi); ozek levi pas ikon z `matTooltip` namesto vodoravne navigacije; zgornja vrstica s stanjem zračnega prostora, iskanjem in prijavo; nov zemljevid (ulice, ceste, reka, pot izbranega leta, kompas, gumbi za povečavo, lebdeča kartica); nova skupna komponenta **Gauge** (polkrožni merilnik); barvne oznake stanj (zelena, oranžna, rdeča, limetina).
+- **Težave:** `backdrop-filter` na glavi je fiksiranemu levemu pasu spremenil izhodišče in pas je prekril vsebino, rešeno z zameglitvijo na psevdoelementu. Po dodani odvisnosti (Tooltip) je razvojni strežnik naložil dve kopiji `@angular/core` (napaka NG0203), rešeno s ponovnim zagonom in počiščenim `.angular/cache`. Na ozkih karticah so se meritve prekrivale, rešeno s prelomom v več vrstic.
+- **Kaj sledi:** faza 5 in 6.
+
+### Faza 5 — Angular Material in Font Awesome (datum: ____)
+
+- **Načrtovano:** namestitev in tema Angular Material, vsaj 4 vrste komponent; Font Awesome prek `@fortawesome/angular-fontawesome`, vsaj 5 ikon.
+- **Izdelano:** obe knjižnici sta bili vgrajeni sproti od faze 2 naprej. Pregled: 8 vrst Material komponent (Toolbar, Button, Card, Form field + Input, Tabs, Menu, Tooltip, Chips), tema Material 3 s prilagoditvami v `styles.scss`; 34 ikon Font Awesome, vse uvožene v TypeScript in prikazane s `<fa-icon>`, brez `<i class="fa">` in brez CDN.
+- **Težave:** `mat-table` ni uporabljen, ker zahteva strukturne direktive (`*matRowDef`), ki jih ta vaja ne dovoljuje; tabele so navadne `<table>` v `mat-card`.
+- **Kaj sledi:** končno preverjanje in oddaja.
+
+### Faza 6 — Preverjanje in dokumentacija (datum: ____)
+
+- **Načrtovano:** prevajanje brez napak, pregled vseh strani na računalniku in telefonu, dokončan README, posnetki zaslona, oddaja.
+- **Izdelano:** `ng build` brez napak in opozoril; vseh 9 poti pregledanih na 1440 px in 375 px (brez vodoravnega drsenja, brez napak v konzoli, kontrast besedila ustreza WCAG AA); v kodi ni `@if`, `@for`, `*ngIf`, `*ngFor` in `class="fa`; 18 posnetkov zaslona v `docs/posnetki/` (Firefox brez okna); osnutki zaslonov kot slike v `docs/osnutki/`; README dopolnjen.
+- **Težave:** brez posebnosti.
+- **Kaj sledi:** GitHub Projects tabla, objava repozitorija na GitHubu, predstavitev.
