@@ -1,0 +1,20 @@
+<nav class="links" aria-label="Glavna navigacija">
+  <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <fa-icon class="link-icon" [icon]="faMapLocationDot" />Radar
+  </a>
+  <a mat-button routerLink="/sledena" routerLinkActive="active">
+    <fa-icon class="link-icon" [icon]="faStar" />Sledena
+  </a>
+  <a mat-button routerLink="/letalisca" routerLinkActive="active">
+    <fa-icon class="link-icon" [icon]="faPlaneDeparture" />Letališča
+  </a>
+  <a mat-button routerLink="/admin" routerLinkActive="active">
+    <fa-icon class="link-icon" [icon]="faUserShield" />Admin
+  </a>
+  <a mat-button routerLink="/o-aplikaciji" routerLinkActive="active">
+    <fa-icon class="link-icon" [icon]="faCircleInfo" />O aplikaciji
+  </a>
+</nav>
+<a mat-flat-button routerLink="/prijava">
+  <fa-icon class="link-icon" [icon]="faRightToBracket" />Prijava
+</a>
