@@ -1,7 +1,7 @@
 .page-title {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
   gap: var(--space-4);
 }
 
@@ -19,7 +19,7 @@
 }
 
 .text {
-  flex: 1;
+  flex: 1 1 220px;
   min-width: 0;
 }
 

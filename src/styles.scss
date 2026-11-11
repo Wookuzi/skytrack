@@ -59,6 +59,8 @@ html {
       outlined-outline-color: var(--mat-sys-outline-variant),
       outlined-container-shape: 20px,
       title-text-weight: 600,
+      title-text-size: 16px,
+      title-text-line-height: 22px,
     )
   );
 
@@ -270,7 +272,14 @@ a {
   }
 
   th {
-    font: var(--mat-sys-label-large);
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-label-small);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  tbody tr:hover {
+    background: var(--mat-sys-surface-container);
   }
 }
 

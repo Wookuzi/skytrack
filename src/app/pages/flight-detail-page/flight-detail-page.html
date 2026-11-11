@@ -11,11 +11,15 @@
 
   <div class="overview">
     <app-map-view size="small" />
-    <div class="stat-grid stats">
-      <app-stat-tile label="Višina" value="11.582" unit="m" [icon]="faMountain" />
-      <app-stat-tile label="Hitrost" value="805" unit="km/h" [icon]="faGaugeHigh" />
-      <app-stat-tile label="Smer" value="208" unit="°" [icon]="faCompass" />
-      <app-stat-tile label="Vzpenjanje" value="0" unit="m/s" [icon]="faArrowsUpDown" />
+    <div class="readings">
+      <mat-card appearance="outlined" class="gauges">
+        <app-gauge label="Hitrost" [value]="805" [max]="1100" display="805" unit="km/h" />
+        <app-gauge label="Višina" [value]="11582" [max]="13000" display="11.582" unit="m" />
+      </mat-card>
+      <div class="stat-grid stats">
+        <app-stat-tile label="Smer" value="208" unit="°" [icon]="faCompass" />
+        <app-stat-tile label="Vzpenjanje" value="0" unit="m/s" [icon]="faArrowsUpDown" />
+      </div>
     </div>
   </div>
 

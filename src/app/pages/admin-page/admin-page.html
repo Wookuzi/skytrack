@@ -31,7 +31,7 @@
               <tr>
                 <td>Ana Novak</td>
                 <td>ana.novak&#64;example.com</td>
-                <td><mat-chip-set aria-label="Vloga"><mat-chip highlighted>Administrator</mat-chip></mat-chip-set></td>
+                <td><mat-chip-set aria-label="Vloga"><mat-chip class="status-active">Administrator</mat-chip></mat-chip-set></td>
                 <td>2. 9. 2026</td>
                 <td class="actions">
                   <button mat-icon-button type="button" aria-label="Uredi uporabnika Ana Novak"><fa-icon [icon]="faPen" /></button>
@@ -41,7 +41,7 @@
               <tr>
                 <td>Marko Kranjc</td>
                 <td>marko.kranjc&#64;example.com</td>
-                <td><mat-chip-set aria-label="Vloga"><mat-chip>Uporabnik</mat-chip></mat-chip-set></td>
+                <td><mat-chip-set aria-label="Vloga"><mat-chip class="status-ok">Uporabnik</mat-chip></mat-chip-set></td>
                 <td>14. 10. 2026</td>
                 <td class="actions">
                   <button mat-icon-button type="button" aria-label="Uredi uporabnika Marko Kranjc"><fa-icon [icon]="faPen" /></button>
@@ -51,7 +51,7 @@
               <tr>
                 <td>Nina Zupan</td>
                 <td>nina.zupan&#64;example.com</td>
-                <td><mat-chip-set aria-label="Vloga"><mat-chip>Uporabnik</mat-chip></mat-chip-set></td>
+                <td><mat-chip-set aria-label="Vloga"><mat-chip class="status-ok">Uporabnik</mat-chip></mat-chip-set></td>
                 <td>3. 11. 2026</td>
                 <td class="actions">
                   <button mat-icon-button type="button" aria-label="Uredi uporabnika Nina Zupan"><fa-icon [icon]="faPen" /></button>
@@ -131,13 +131,13 @@
       <!-- Sporočila -->
       <mat-tab label="Sporočila (2)">
         <div class="tab-body messages">
-          <app-message-card heading="Napačna višina pri letu CTN436R" meta="Marko Kranjc · 10. 11. 2026" status="Novo" [unread]="true" [icon]="faEnvelope">
+          <app-message-card heading="Napačna višina pri letu CTN436R" meta="Marko Kranjc · 10. 11. 2026" status="Napaka" tone="alert" [unread]="true" [icon]="faEnvelope">
             Višina se je za nekaj sekund prikazala kot 0 m, čeprav je letalo letelo.
           </app-message-card>
-          <app-message-card heading="Predlog: filter po letalski družbi" meta="Gost · 9. 11. 2026" status="Novo" [unread]="true" [icon]="faEnvelope">
+          <app-message-card heading="Predlog: filter po letalski družbi" meta="Gost · 9. 11. 2026" status="Predlog" tone="warn" [unread]="true" [icon]="faEnvelope">
             Bilo bi super, če bi lahko prikazal samo lete izbrane družbe.
           </app-message-card>
-          <app-message-card heading="Hvala za aplikacijo" meta="Nina Zupan · 4. 11. 2026" status="Prebrano" [icon]="faEnvelopeOpen">
+          <app-message-card heading="Hvala za aplikacijo" meta="Nina Zupan · 4. 11. 2026" status="Prebrano" tone="ok" [icon]="faEnvelopeOpen">
             Uporabljam jo za spotting na Brniku. Odlično!
           </app-message-card>
         </div>

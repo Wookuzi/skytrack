@@ -8,14 +8,13 @@ import {
   faArrowLeft,
   faArrowsUpDown,
   faCompass,
-  faGaugeHigh,
-  faMountain,
   faPlane,
   faRoute,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { EmptyState } from '../../shared/empty-state/empty-state';
 import { FlightCard } from '../../shared/flight-card/flight-card';
+import { Gauge } from '../../shared/gauge/gauge';
 import { MapView } from '../../shared/map-view/map-view';
 import { PageTitle } from '../../shared/page-title/page-title';
 import { StatTile } from '../../shared/stat-tile/stat-tile';
@@ -33,6 +32,7 @@ import { StatTile } from '../../shared/stat-tile/stat-tile';
     StatTile,
     FlightCard,
     EmptyState,
+    Gauge,
   ],
   selector: 'app-flight-detail-page',
   styleUrl: './flight-detail-page.scss',
@@ -42,8 +42,6 @@ export class FlightDetailPage {
   protected readonly faArrowLeft = faArrowLeft;
   protected readonly faPlane = faPlane;
   protected readonly faStar = faStar;
-  protected readonly faMountain = faMountain;
-  protected readonly faGaugeHigh = faGaugeHigh;
   protected readonly faCompass = faCompass;
   protected readonly faArrowsUpDown = faArrowsUpDown;
   protected readonly faRoute = faRoute;

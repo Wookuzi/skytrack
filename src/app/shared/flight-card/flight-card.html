@@ -6,9 +6,6 @@
     </span>
     <mat-card-title>{{ callsign() }}</mat-card-title>
     <mat-card-subtitle>{{ country() }} · {{ icao24() }}</mat-card-subtitle>
-    <mat-chip-set class="status" aria-label="Stanje leta">
-      <mat-chip [class]="'status-' + tone()">{{ status() }}</mat-chip>
-    </mat-chip-set>
   </mat-card-header>
   <mat-card-content class="card-body">
     <dl class="data-list metrics">
@@ -28,6 +25,9 @@
     <p class="note">{{ note() }}</p>
   </mat-card-content>
   <mat-card-actions class="actions">
+    <mat-chip-set aria-label="Stanje leta">
+      <mat-chip [class]="'status-' + tone()">{{ status() }}</mat-chip>
+    </mat-chip-set>
     <a mat-button [routerLink]="['/let', icao24()]">
       Podrobnosti<fa-icon class="arrow" [icon]="faArrowRight" />
     </a>
