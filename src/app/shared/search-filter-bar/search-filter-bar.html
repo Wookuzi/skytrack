@@ -1,7 +1,7 @@
 <div class="bar" role="search">
   <mat-form-field appearance="outline" class="search" subscriptSizing="dynamic">
     <mat-label>{{ label() }}</mat-label>
-    <fa-icon matPrefix class="prefix" [icon]="faMagnifyingGlass" />
+    <fa-icon matPrefix class="field-icon" [icon]="faMagnifyingGlass" />
     <input matInput type="search" [placeholder]="placeholder()" />
   </mat-form-field>
   <div class="filters"><ng-content /></div>

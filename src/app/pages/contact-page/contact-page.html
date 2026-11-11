@@ -1,3 +1,68 @@
 <div class="page">
-  <app-page-title heading="Kontakt" subtitle="Vprašanja, predlogi in prijave napak" [icon]="icon" />
+  <app-page-title heading="Kontakt" subtitle="Vprašanja, predlogi in prijave napak" [icon]="faEnvelope" />
+
+  <div class="layout">
+    <mat-card appearance="outlined" class="info">
+      <mat-card-header>
+        <mat-card-title>Kontaktni podatki</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul class="info-list">
+          <li>
+            <fa-icon class="info-icon" [icon]="faEnvelope" />
+            <div>
+              <span class="info-label">E-pošta</span>
+              <a href="mailto:skytrack@example.com">skytrack&#64;example.com</a>
+            </div>
+          </li>
+          <li>
+            <fa-icon class="info-icon" [icon]="faClock" />
+            <div>
+              <span class="info-label">Odzivni čas</span>
+              <span>Običajno v dveh delovnih dneh</span>
+            </div>
+          </li>
+          <li>
+            <fa-icon class="info-icon" [icon]="faDatabase" />
+            <div>
+              <span class="info-label">Vir podatkov o letih</span>
+              <a href="https://opensky-network.org" target="_blank" rel="noopener">OpenSky Network</a>
+            </div>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Pošlji sporočilo</mat-card-title>
+        <mat-card-subtitle>Za pošiljanje ne potrebuješ računa.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="form-fields" aria-label="Kontaktni obrazec">
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Ime</mat-label>
+              <input matInput type="text" name="name" autocomplete="name" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>E-pošta</mat-label>
+              <input matInput type="email" name="email" autocomplete="email" />
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Zadeva</mat-label>
+            <input matInput type="text" name="subject" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Sporočilo</mat-label>
+            <textarea matInput name="message" rows="6"></textarea>
+          </mat-form-field>
+          <button mat-flat-button type="button" class="send">
+            <fa-icon class="button-icon" [icon]="faPaperPlane" />Pošlji
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

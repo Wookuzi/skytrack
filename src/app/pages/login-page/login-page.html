@@ -1,3 +1,26 @@
 <div class="page">
-  <app-page-title heading="Prijava" subtitle="Prijavi se v svoj račun SkyTrack" [icon]="icon" />
+  <app-page-title heading="Prijava" subtitle="Prijavi se v svoj račun SkyTrack" [icon]="faRightToBracket" />
+
+  <mat-card appearance="outlined" class="form-card">
+    <mat-card-content>
+      <form class="form-fields" aria-label="Prijava">
+        <mat-form-field appearance="outline">
+          <mat-label>E-pošta</mat-label>
+          <fa-icon matPrefix class="field-icon" [icon]="faEnvelope" />
+          <input matInput type="email" name="email" autocomplete="email" placeholder="ime@primer.si" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Geslo</mat-label>
+          <fa-icon matPrefix class="field-icon" [icon]="faLock" />
+          <input matInput type="password" name="password" autocomplete="current-password" />
+        </mat-form-field>
+        <button mat-flat-button type="button">
+          <fa-icon class="button-icon" [icon]="faRightToBracket" />Prijava
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="form-actions">
+      <p class="form-hint">Nimaš računa? <a routerLink="/registracija">Registracija</a></p>
+    </mat-card-actions>
+  </mat-card>
 </div>

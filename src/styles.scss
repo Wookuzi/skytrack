@@ -184,3 +184,14 @@ a {
     font: var(--mat-sys-label-large);
   }
 }
+
+// Ikona pred besedilom v polju obrazca.
+.field-icon {
+  padding-inline: var(--space-4) var(--space-2);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.form-actions {
+  justify-content: center;
+  padding-bottom: var(--space-4);
+}

@@ -1,3 +1,37 @@
 <div class="page">
-  <app-page-title heading="Registracija" subtitle="Ustvari račun in začni slediti letalom" [icon]="icon" />
+  <app-page-title heading="Registracija" subtitle="Ustvari račun in začni slediti letalom" [icon]="faUserPlus" />
+
+  <mat-card appearance="outlined" class="form-card">
+    <mat-card-content>
+      <form class="form-fields" aria-label="Registracija">
+        <mat-form-field appearance="outline">
+          <mat-label>Ime</mat-label>
+          <fa-icon matPrefix class="field-icon" [icon]="faUser" />
+          <input matInput type="text" name="name" autocomplete="name" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>E-pošta</mat-label>
+          <fa-icon matPrefix class="field-icon" [icon]="faEnvelope" />
+          <input matInput type="email" name="email" autocomplete="email" placeholder="ime@primer.si" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Geslo</mat-label>
+          <fa-icon matPrefix class="field-icon" [icon]="faLock" />
+          <input matInput type="password" name="password" autocomplete="new-password" />
+          <mat-hint>Vsaj 8 znakov</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Ponovi geslo</mat-label>
+          <fa-icon matPrefix class="field-icon" [icon]="faLock" />
+          <input matInput type="password" name="password-repeat" autocomplete="new-password" />
+        </mat-form-field>
+        <button mat-flat-button type="button">
+          <fa-icon class="button-icon" [icon]="faUserPlus" />Ustvari račun
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="form-actions">
+      <p class="form-hint">Že imaš račun? <a routerLink="/prijava">Prijava</a></p>
+    </mat-card-actions>
+  </mat-card>
 </div>
