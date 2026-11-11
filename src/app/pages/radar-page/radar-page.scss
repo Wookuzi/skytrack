@@ -1,0 +1,33 @@
+.radar {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.flights {
+  display: grid;
+  gap: var(--space-4);
+}
+
+// Širok zaslon: zemljevid in seznam drug ob drugem, seznam se drsi posebej.
+@media (min-width: 960px) {
+  .radar {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    align-items: start;
+  }
+
+  .map {
+    position: sticky;
+    top: 88px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}

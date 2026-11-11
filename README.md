@@ -394,9 +394,9 @@ Faze sledijo šestim tednom iz navodil naloge. Izvedba je lahko hitrejša, vrstn
 | 1 | Tabla nalog | Ustvariti GitHub Projects tablo in vnesti naloge iz te tabele | načrtovano |
 | 1 | Okolje | Namestiti Node 24 in Angular CLI | zaključeno |
 | 1 | Angular projekt | `ng new`, prvi commit, osnovni `README.md` | zaključeno |
-| 2 | Postavitev | Header, Navbar, Footer, usmerjanje, prazne strani | načrtovano |
-| 2 | Skupne komponente | PageTitle, FlightCard, StatTile, SearchFilterBar, MapView, AirportCard | načrtovano |
-| 2 | Osnovni prikazi | Radar, Podrobnosti leta, Sledena, Letališča s statično vsebino | načrtovano |
+| 2 | Postavitev | Header, Navbar, Footer, usmerjanje, prazne strani | zaključeno |
+| 2 | Skupne komponente | PageTitle, FlightCard, StatTile, SearchFilterBar, MapView, AirportCard | zaključeno |
+| 2 | Osnovni prikazi | Radar, Podrobnosti leta, Sledena, Letališča s statično vsebino | zaključeno |
 | 3 | Obrazci | Prijava, Registracija, Kontakt | načrtovano |
 | 3 | Preostale strani | Admin, O aplikaciji | načrtovano |
 | 3 | Slog | Barvna shema, tipografija, razmiki | načrtovano |
@@ -464,3 +464,10 @@ Dnevnik se piše po fazah. Datume vpiši sam.
 - **Izdelano:** načrt (razdelki 1–13), izbran in preverjen OpenSky Network, nameščena Node.js 24 LTS in Angular CLI 22.2.6, ustvarjen Angular projekt (SCSS, usmerjevalnik, brez SSR, brez zone.js), nameščena Angular Material 22.2.6 in Font Awesome (angular-fontawesome 5.1.0, ikone 7.3.1), pripravljene mape `layout/`, `shared/`, `pages/`.
 - **Težave:** na računalniku je bil Node.js 25, ki ga Angular CLI 22 ne podpira; zamenjan z Node.js 24 LTS. Uradnih pogojev uporabe OpenSky ni bilo mogoče odpreti (HTTP 403).
 - **Kaj sledi:** osnutki zaslonov kot slike ali PDF, GitHub Projects tabla, nato faza 2 (postavitev in skupne komponente).
+
+### Faza 2 — Postavitev, skupne komponente in osnovni prikazi (datum: ____)
+
+- **Načrtovano:** Header, Navbar, Footer, usmerjanje med 9 stranmi, šest skupnih komponent, vsebina strani Radar, Podrobnosti leta, Sledena letala in Letališča.
+- **Izdelano:** vseh 18 komponent; postavitev z `mat-toolbar` in povezavami usmerjevalnika; skupne komponente PageTitle, FlightCard, StatTile, SearchFilterBar, MapView (lasten SVG zemljevid) in AirportCard z vhodnimi podatki (`input()`); štiri strani z vzorčnimi podatki iz OpenSky; preostalih pet strani ima naslov in čaka na fazo 3. Material (toolbar, button, card, chips, form field, tabs) in Font Awesome sta vgrajena sproti.
+- **Težave:** začetni paket je presegel omejitev 500 kB; rešeno z nalaganjem strani po potrebi (`loadComponent`). Brez `@if` se prazni deli (npr. kartica brez zapiska) skrijejo s CSS `:empty`.
+- **Kaj sledi:** obrazci (Prijava, Registracija, Kontakt), strani Admin in O aplikaciji, temna tema, navigacija na telefonu.

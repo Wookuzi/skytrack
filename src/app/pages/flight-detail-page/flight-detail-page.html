@@ -1,1 +1,105 @@
-<p>flight-detail-page works!</p>
+<div class="page">
+  <a mat-button routerLink="/" class="back">
+    <fa-icon class="button-icon" [icon]="faArrowLeft" />Nazaj na radar
+  </a>
+
+  <app-page-title heading="RYR5PC · Ryanair" subtitle="Poljska · ICAO24 48c2b0" [icon]="faPlane">
+    <button mat-flat-button type="button">
+      <fa-icon class="button-icon" [icon]="faStar" />Sledi
+    </button>
+  </app-page-title>
+
+  <div class="overview">
+    <app-map-view size="small" />
+    <div class="stats">
+      <app-stat-tile label="Višina" value="11.582" unit="m" [icon]="faMountain" />
+      <app-stat-tile label="Hitrost" value="805" unit="km/h" [icon]="faGaugeHigh" />
+      <app-stat-tile label="Smer" value="208" unit="°" [icon]="faCompass" />
+      <app-stat-tile label="Vzpenjanje" value="0" unit="m/s" [icon]="faArrowsUpDown" />
+    </div>
+  </div>
+
+  <mat-card appearance="outlined">
+    <mat-tab-group>
+      <mat-tab label="Podatki">
+        <dl class="data-list tab-body">
+          <div>
+            <dt>ICAO24</dt>
+            <dd>48c2b0</dd>
+          </div>
+          <div>
+            <dt>Klicni znak</dt>
+            <dd>RYR5PC</dd>
+          </div>
+          <div>
+            <dt>Država</dt>
+            <dd>Poljska</dd>
+          </div>
+          <div>
+            <dt>Squawk</dt>
+            <dd>1000</dd>
+          </div>
+          <div>
+            <dt>Na tleh</dt>
+            <dd>Ne</dd>
+          </div>
+          <div>
+            <dt>Zadnji kontakt</dt>
+            <dd>9:12:04</dd>
+          </div>
+        </dl>
+      </mat-tab>
+      <mat-tab label="Pot">
+        <p class="tab-body">
+          Izris poti bo na voljo, ko bo aplikacija povezana z zalednim delom. OpenSky za
+          anonimne uporabnike vrača samo trenutno stanje, zato bo pot sestavljena iz zaporednih
+          položajev.
+        </p>
+      </mat-tab>
+      <mat-tab label="Zgodovina">
+        <div class="tab-body table-wrap">
+          <table class="history">
+            <caption>Zadnji zabeleženi položaji</caption>
+            <thead>
+              <tr>
+                <th scope="col">Čas</th>
+                <th scope="col">Višina</th>
+                <th scope="col">Hitrost</th>
+                <th scope="col">Smer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>9:12:04</td>
+                <td>11.582 m</td>
+                <td>805 km/h</td>
+                <td>208°</td>
+              </tr>
+              <tr>
+                <td>9:11:54</td>
+                <td>11.582 m</td>
+                <td>803 km/h</td>
+                <td>208°</td>
+              </tr>
+              <tr>
+                <td>9:11:44</td>
+                <td>11.575 m</td>
+                <td>801 km/h</td>
+                <td>207°</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+
+  <section aria-labelledby="similar-title">
+    <h2 id="similar-title" class="section-title">Podobni leti</h2>
+    <div class="card-grid">
+      <app-flight-card icao24="4bb273" callsign="THY72B" country="Turčija" [altitude]="10371" [speed]="690" [heading]="299" />
+      <app-flight-card icao24="39de4c" callsign="TVF44AG" country="Francija" [altitude]="11270" [speed]="921" [heading]="128" />
+      <app-flight-card icao24="471d6c" callsign="WMT4WE" country="Madžarska" [altitude]="10973" [speed]="931" [heading]="76" />
+    </div>
+  </section>
+</div>

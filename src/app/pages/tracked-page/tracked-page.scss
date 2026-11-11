@@ -1,0 +1,13 @@
+.tab-body {
+  padding-top: var(--space-6);
+}
+
+.notes {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 640px;
+}
+
+.note-text {
+  padding-top: var(--space-2);
+}

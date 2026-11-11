@@ -1,1 +1,22 @@
-<p>airports-page works!</p>
+<div class="page">
+  <app-page-title
+    heading="Letališča"
+    subtitle="Letališča v Sloveniji in bližnji okolici"
+    [icon]="faPlaneDeparture"
+  />
+
+  <app-search-filter-bar label="Išči letališče" placeholder="Ime, mesto ali koda">
+    <mat-chip-listbox aria-label="Filter po državi">
+      <mat-chip-option selected>Vse</mat-chip-option>
+      <mat-chip-option>Slovenija</mat-chip-option>
+      <mat-chip-option>Hrvaška</mat-chip-option>
+    </mat-chip-listbox>
+  </app-search-filter-bar>
+
+  <div class="card-grid">
+    <app-airport-card name="Letališče Jožeta Pučnika Ljubljana" city="Brnik" country="Slovenija" iata="LJU" icao="LJLJ" />
+    <app-airport-card name="Letališče Edvarda Rusjana Maribor" city="Maribor" country="Slovenija" iata="MBX" icao="LJMB" />
+    <app-airport-card name="Letališče Portorož" city="Sečovlje" country="Slovenija" iata="POW" icao="LJPZ" />
+    <app-airport-card name="Letališče Franjo Tuđman Zagreb" city="Zagreb" country="Hrvaška" iata="ZAG" icao="LDZA" />
+  </div>
+</div>
